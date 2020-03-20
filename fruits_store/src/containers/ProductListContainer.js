@@ -1,5 +1,7 @@
 import {connect} from 'react-redux';
-import getAllProducts from '../redux/actions';
+import React from 'react';
+import getAllProducts from '../redux/actions/action.js';
+
 import ProductList from '../components/ProductList';
 
 const mapDispatchToProps = dispatch => {

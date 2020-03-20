@@ -14,7 +14,6 @@ const getAllProducts = () => (dispatch, getState) => {
             dispatch(fetchProductsError(err)) // dispatch della action to indicate that the call server is Ko 
         })
 }
-export default getAllProducts;
 
 const fetchProductsRequest = data => {
     return {
@@ -42,3 +41,6 @@ const fetchProductsError = error => {
         }
     }
 }
+
+
+export default getAllProducts;
