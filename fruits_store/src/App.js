@@ -1,19 +1,17 @@
-import React from 'react';
-import Button from './components/button/Button';
-import ProductList from './components/productList/ProdutcList';
-import ProductDetails from './components/productDetails/ProductDetails';
-import Basket from './components/basket/basket';
+import {ProductListPage, ProductDetailsPage, BasketPage} from './pages';
+import ProductsListConatiner from './containers/ProductListContainer';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <Button/>
-      <ProductList />
-      <ProductDetails />
-      <Basket />
+      <ProductsListConatiner />
+      {/* <hr />
+      <ProductDetailsPage />
+      <hr />
+      <Basketpage />  */}
     </div>
   );
 }
 
-export default App;
 
+//sostituire i componenti con i container component
