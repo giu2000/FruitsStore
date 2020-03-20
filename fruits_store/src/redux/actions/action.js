@@ -8,10 +8,12 @@ const getAllProducts = () => (dispatch, getState) => {
         .then(res => res.json())
         .then(data => {
             dispatch(fetchProductsSuccess(data)) // dispatch della action to indicate thant call server is OK and returned with data
+            console.log('fetchSuccess',data);
         })
         .catch(err => {
             console.log(err);
             dispatch(fetchProductsError(err)) // dispatch della action to indicate that the call server is Ko 
+            console.log('fetchError')
         })
 }
 
