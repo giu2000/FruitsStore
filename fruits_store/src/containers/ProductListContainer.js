@@ -1,7 +1,5 @@
 import {connect} from 'react-redux';
-import React from 'react';
 import getAllProducts from '../redux/actions/action.js';
-
 import ProductList from '../components/ProductList';
 
 const mapDispatchToProps = dispatch => {
@@ -18,6 +16,6 @@ const mapStateToProps = state => {
     } 
 }
 
-const ProductsListConatiner = connect(mapStateToProps, mapDispatchToProps)(ProductList);
+const ProductsListContainer = connect(mapStateToProps, mapDispatchToProps)(ProductList);
 
-export default ProductsListConatiner;
+export default ProductsListContainer;

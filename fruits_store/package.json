@@ -16,7 +16,8 @@
     "uniqid": "^5.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently --kill-others \"npm run start-react\" \"npm run json-server\"",
+    "start-react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

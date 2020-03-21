@@ -1,37 +1,31 @@
 import React from 'react';
 import Product from './Product';
 
-// let productList = [
-//     {
-//         "name": "product1",
-//         "price": "price1"        
-//     },
-//     {
-//         "name": "product2",
-//         "price": "price2"        
-//     },
-//     {
-//         "name": "product3",
-//         "price": "price3"        
-//     }
-// ]
-
-const ProductList = (props) => {
-    
-    return(
-        <ul>
-            {props.products.map((elem, index) => {
-            return (
-                    <Product 
-                        key={index}
-                        name={elem.name}
-                    />
-                )
-            })
+export default class ProductList extends React.Component{
+    componentDidMount(){
+        this.props.getAllProducts();
+    }
+    render(){
+        const {loading, error, products} = this.props;
+        debugger;
+        if(loading){
+            return <div>Loading..</div>
         }
+        if(error){
+            return <div>Error...</div>
+        }
+        return(
+            <ul className='productList'>
+                {products.map((elem, index) => {
+                    return (
+                            <Product 
+                                key={index}
+                                name={elem.name}
+                            />
+                        )
+                    })
+                }
         </ul>
-        
-    )
+        )
+    }
 }
-
-export default ProductList;

@@ -1,18 +1,14 @@
 import {ProductListPage, ProductDetailsPage, BasketPage} from './pages';
-import ProductsListConatiner from './containers/ProductListContainer';
+import ProductsListContainer from './containers/ProductListContainer';
 import React from 'react';
 
-export default function App() {
+const App = () => {
   return (
-    <div className="App">
-      <ProductsListConatiner />
-      {/* <hr />
-      <ProductDetailsPage />
-      <hr />
-      <Basketpage />  */}
+    <div className='App'>
+      <ProductsListContainer/>
     </div>
-  );
+  )
 }
 
+export default App;
 
-//sostituire i componenti con i container component
