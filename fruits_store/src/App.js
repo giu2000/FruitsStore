@@ -1,18 +1,13 @@
+import {ProductListPage, ProductDetailsPage, BasketPage} from './pages';
+import ProductsListContainer from './containers/ProductListContainer';
 import React from 'react';
-import Button from './components/button/Button';
-import ProductList from './components/productList/ProdutcList';
-import ProductDetails from './components/productDetails/ProductDetails';
-import Basket from './components/basket/basket';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Button/>
-      <ProductList />
-      <ProductDetails />
-      <Basket />
+    <div className='App'>
+      <ProductsListContainer/>
     </div>
-  );
+  )
 }
 
 export default App;
