@@ -7,7 +7,6 @@ export default class ProductList extends React.Component{
     }
     render(){
         const {loading, error, products} = this.props;
-        debugger;
         if(loading){
             return <div>Loading..</div>
         }
@@ -15,17 +14,21 @@ export default class ProductList extends React.Component{
             return <div>Error...</div>
         }
         return(
-            <ul className='productList'>
-                {products.map((elem, index) => {
-                    return (
-                            <Product 
-                                key={index}
-                                name={elem.name}
+            <>
+                <div><b>Products List</b></div>
+                <ul className='productList'>
+                    {products.map((product, index) => {
+                        return (
+                            <Product
+                                key={product.id}
+                                product={product}
+                                handleProductClick={this.props.handleProductClick}
                             />
                         )
                     })
-                }
-        </ul>
+                    }
+                </ul>
+            </>
         )
     }
 }

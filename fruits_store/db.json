@@ -2,15 +2,21 @@
     "products": [
       {
         "id": "1",
-        "name": "orange"
+        "name": "orange",
+        "description": "orange description",
+        "price": "100"
       },
       {
         "id": "2",
-        "name": "apple"
+        "name": "apple",
+        "description": "apple description",
+        "price": "200"
       },
       {
         "id": "3",
-        "name": "lemon"
+        "name": "lemon",
+        "description": "lemon description",
+        "price": "300"
       }
   
     ]

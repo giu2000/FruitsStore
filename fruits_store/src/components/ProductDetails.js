@@ -1,13 +1,21 @@
 import React from 'react';
-import Button from '../button/Button';
 
-const ProductDetails = (props) => {
-    return(
+const details = product => {
+    return Object.keys(product).map(key => {
+        return (
+            <div key={key}>{`${key}: ${product[key]}`}</div>
+        )
+    })
+}
+
+const ProductDetails = props => {
+    console.log('selectedProduct', props.selectedProduct)
+    return (
         <>
-            <div>Dettaglio Prodotto</div>
-            <Button>Add To Cart</Button>
+            <div><b>Product Details</b></div>
+            <div>{props.selectedProduct !== '' ? details(props.products[props.selectedProduct-1]) : 'seleziona un prodotto '}</div>
+            
         </>
-        
     )
 }
 
