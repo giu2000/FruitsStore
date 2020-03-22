@@ -2,7 +2,10 @@ import React from 'react';
 
 const Product = (props) => {
     return(
-        <div>{props.name}
+        <div
+            onClick = {(productId) => props.handleProductClick(productId)}
+        >
+        {props.product.name}
         </div>)
 }
 

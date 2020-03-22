@@ -1,13 +1,26 @@
 import React from 'react';
-import Button from '../button/Button';
+import Button from '../components/Button';
 
-const ProductDetails = (props) => {
-    return(
+
+// const ProductDetails = props => {
+//     if(props.selectedProduct){
+//         return (
+//             <>
+//                 <div>Dettaglio Prodotto</div>
+//                 <div>{props.selectedProduct.name}</div>
+//             </>
+//         )
+//     }
+//     else return ({})
+// }
+
+const ProductDetails = props => {
+    console.log('selectedProduct', props.selectedProduct)
+    return (
         <>
             <div>Dettaglio Prodotto</div>
-            <Button>Add To Cart</Button>
+            <div>{props.selectedProduct !== '' ? `productId=${props.selectedProduct}` : 'seleziona un prodotto '}</div>
         </>
-        
     )
 }
 
