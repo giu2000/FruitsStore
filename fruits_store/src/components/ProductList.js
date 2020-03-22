@@ -16,6 +16,7 @@ export default class ProductList extends React.Component{
             console.log('error', error)
             return <div>Error...</div>
         }
+        console.log('products', products)
         return(
             <ul className='productList'>
                 {products.map((product, index) => {
@@ -23,7 +24,6 @@ export default class ProductList extends React.Component{
                             <Product 
                                 key={index}
                                 product={product}
-                                // handleProductClick={this.props.getProductDetails}
                                 handleProductClick={this.props.handleProductClick}
                             />
                         )

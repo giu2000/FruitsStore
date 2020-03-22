@@ -3,7 +3,7 @@ import React from 'react';
 const Product = (props) => {
     return(
         <div
-            onClick = {(productId) => props.handleProductClick(productId)}
+            onClick = {() => props.handleProductClick(props.product.id)}
         >
         {props.product.name}
         </div>)
