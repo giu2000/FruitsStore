@@ -10,7 +10,9 @@ import getProductDetails from "../redux/actions/getProductDetails";
 
 const mapStateToProps = state => {
     return{
+        products: state.products.items,
         selectedProduct: state.selectedProduct.selectedProduct
+        // selectedProduct: state.products[state.selectedProduct.selectedProduct]
     }
 }
 

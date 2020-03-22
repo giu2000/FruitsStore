@@ -18,18 +18,21 @@ export default class ProductList extends React.Component{
         }
         console.log('products', products)
         return(
-            <ul className='productList'>
-                {products.map((product, index) => {
-                    return (
-                            <Product 
-                                key={index}
+            <>
+                <div><b>Products List</b></div>
+                <ul className='productList'>
+                    {products.map((product, index) => {
+                        return (
+                            <Product
+                                key={product.id}
                                 product={product}
                                 handleProductClick={this.props.handleProductClick}
                             />
                         )
                     })
-                }
-        </ul>
+                    }
+                </ul>
+            </>
         )
     }
 }

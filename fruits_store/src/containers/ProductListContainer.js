@@ -6,7 +6,7 @@ import ProductList from '../components/ProductList';
 const mapDispatchToProps = dispatch => {
     return {
         getAllProducts: () =>  dispatch(getAllProducts()),
-        handleProductClick: (productId) => dispatch(getProductDetails(productId))
+        handleProductClick: productId => dispatch(getProductDetails(productId))
     }
 } 
 
