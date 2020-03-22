@@ -7,16 +7,12 @@ export default class ProductList extends React.Component{
     }
     render(){
         const {loading, error, products} = this.props;
-        // debugger;
         if(loading){
-            console.log('loading', loading)
             return <div>Loading..</div>
         }
         if(error){
-            console.log('error', error)
             return <div>Error...</div>
         }
-        console.log('products', products)
         return(
             <>
                 <div><b>Products List</b></div>

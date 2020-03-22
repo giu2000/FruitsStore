@@ -15,7 +15,6 @@ const mapStateToProps = state => {
         loading: state.products.loading,
         error: state.products.error,
         products: state.products.items,
-        // productSelected : state.productSelected
     } 
 }
 
