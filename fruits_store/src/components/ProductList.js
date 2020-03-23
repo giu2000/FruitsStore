@@ -1,5 +1,6 @@
 import React from 'react';
 import Product from './Product';
+import Button from './Button';
 
 export default class ProductList extends React.Component{
     componentDidMount(){
@@ -19,11 +20,14 @@ export default class ProductList extends React.Component{
                 <ul className='productList'>
                     {products.map((product, index) => {
                         return (
-                            <Product
-                                key={product.id}
-                                product={product}
-                                handleProductClick={this.props.handleProductClick}
-                            />
+                            <>
+                                <Product
+                                    key={product.id}
+                                    product={product}
+                                    handleProductClick={this.props.handleProductClick}
+                                />
+                                <Button handleClickAddToCart={this.props.handleClickAddToCart} />
+                            </>
                         )
                     })
                     }

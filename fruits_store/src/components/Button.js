@@ -1,8 +1,19 @@
 import React from 'react';
 
-const Button = () => {
+
+
+const fakeProduct = {
+    "id": "25",
+    "name": "peer",
+    "description": "peer description",
+    "price": "200"
+}
+
+const Button = props => {
     return(
-        <button className="button-primary">Button element</button>
+        <button onClick={() => props.handleClickAddToCart(fakeProduct)} >
+            Add To cart
+        </button>
     )
 }
 
