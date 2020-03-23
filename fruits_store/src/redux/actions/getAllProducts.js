@@ -9,7 +9,6 @@ const getAllProducts = () => dispatch => {
         })
         .catch(error => {
             dispatch(fetchProductsError(error))
-            console.log('request error')
         })
 }
 

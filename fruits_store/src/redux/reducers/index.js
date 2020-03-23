@@ -7,8 +7,7 @@ import addToCart from "./addProductToCartReducer";
 const rootReducer = combineReducers({
     products: allProductsReducer,
     selectedProduct: productDetails,
-    cart: addToCart
-
+    cart: addToCart,
 })
 
 export default rootReducer;

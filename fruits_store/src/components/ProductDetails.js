@@ -9,7 +9,6 @@ const details = product => {
 }
 
 const ProductDetails = props => {
-    console.log('selectedProduct', props.selectedProduct)
     return (
         <>
             <div><b>Product Details</b></div>

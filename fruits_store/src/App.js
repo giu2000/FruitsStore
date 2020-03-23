@@ -2,6 +2,7 @@ import {ProductListPage, ProductDetailsPage, BasketPage} from './pages';
 import ProductsListContainer from './containers/ProductListContainer';
 import React from 'react';
 import ProductDetailsContainer from './containers/ProductDetailsContainer';
+import CartContainer from './containers/CartContainer';
 
 const App = () => {
   return (
@@ -9,6 +10,8 @@ const App = () => {
       <ProductsListContainer/>
       <hr></hr>
       <ProductDetailsContainer />
+      <hr></hr>
+      <CartContainer />
     </div>
   )
 }

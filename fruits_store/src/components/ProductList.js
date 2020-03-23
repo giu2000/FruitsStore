@@ -14,6 +14,7 @@ export default class ProductList extends React.Component{
         if(error){
             return <div>Error...</div>
         }
+        console.log('product-list',products)
         return(
             <>
                 <div><b>Products List</b></div>
