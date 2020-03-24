@@ -20,14 +20,13 @@ export default class ProductList extends React.Component{
                 <ul className='productList'>
                     {products.map((product, index) => {
                         return (
-                            <>
+                            <div key={product.id + index}>
                                 <Product
-                                    key={product.id}
                                     product={product}
                                     handleProductClick={this.props.handleProductClick}
                                 />
-                                <Button handleClickAddToCart={this.props.handleClickAddToCart} />
-                            </>
+                                <Button onClick={this.props.handleClickAddToCart} text="Add to Cart" />
+                            </div>
                         )
                     })
                     }

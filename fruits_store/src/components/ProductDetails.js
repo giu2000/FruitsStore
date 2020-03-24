@@ -10,11 +10,10 @@ const details = product => {
 
 const ProductDetails = props => {
     return (
-        <>
+        <div>
             <div><b>Product Details</b></div>
             <div>{props.selectedProduct !== '' ? details(props.products[props.selectedProduct-1]) : 'seleziona un prodotto '}</div>
-            
-        </>
+        </div>
     )
 }
 

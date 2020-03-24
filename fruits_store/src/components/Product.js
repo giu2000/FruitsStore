@@ -1,11 +1,12 @@
 import React from 'react';
 
 const Product = (props) => {
-    return(
+    const { id, name, price } = props.product;
+    return (
         <div
-            onClick = {() => props.handleProductClick(props.product.id)}
+            onClick = {() => props.handleProductClick(id)} /* a cosa serve questo onClick ? */
         >
-        {props.product.name}
+            <b>{name}</b> | <i>$ {price}</i>
         </div>)
 }
 

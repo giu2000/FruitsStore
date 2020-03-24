@@ -1,18 +1,11 @@
 import React from 'react';
 
-
-
-const fakeProduct = {
-    "id": "25",
-    "name": "peer",
-    "description": "peer description",
-    "price": "200"
-}
-
+// il Button non deve avere logica legata al Market
+// deve ricevere delle props e basta
 const Button = props => {
     return(
-        <button onClick={() => props.handleClickAddToCart(fakeProduct)} >
-            Add To cart
+        <button onClick={() => props.onClick()} >
+            {props.text}
         </button>
     )
 }

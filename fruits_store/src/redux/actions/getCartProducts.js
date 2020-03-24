@@ -3,10 +3,9 @@ import { FETCH_PRODUCTS_CART_REQUEST, FETCH_PRODUCTS_CART_SUCCESS, FETCH_PRODUCT
 
 const getCartProducts = () => dispatch => {
     dispatch(fetchProductsCartRequest);
-    fetch('http://localhost:3001/cart')
+    fetch('http://127.0.0.1:3001/cart')
         .then(res => res.json())
         .then(products => {
-            debugger;
             dispatch(fetchProductsCartSuccess(products))
         })
         .catch(error => dispatch(fetchProductsCartError(error)))
