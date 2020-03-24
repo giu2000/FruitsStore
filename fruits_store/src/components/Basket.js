@@ -18,6 +18,11 @@ export default class Basket extends React.Component {
         return (
             <>
                 <div><b>Cart</b></div>
+                <div>{products.map(product => {
+                    return(
+                        <div key={product.id}>{product.name}</div>
+                    )
+                })}</div>
             </>
         )
     }
