@@ -17,7 +17,7 @@ const addToCart = (state= initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                products: action.payload.product
+                products: action.payload.products
             }
         case LOAD_POST_ERROR:
             return {

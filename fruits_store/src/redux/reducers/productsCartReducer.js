@@ -3,7 +3,7 @@ import { FETCH_PRODUCTS_CART_REQUEST, FETCH_PRODUCTS_CART_SUCCESS, FETCH_PRODUCT
 const initialState = {
     loading: false,
     error: null,
-    products: []
+    items: []
 }
 
 const productsCart = (state = initialState ,action) => {
@@ -17,8 +17,9 @@ const productsCart = (state = initialState ,action) => {
             return {
                 ...state,
                 loading: false,
-                products: action.payload.products
+                items: action.payload.products
             }
+            
         case FETCH_PRODUCTS_CART_ERROR:
             return {
                 ...state,
@@ -26,7 +27,7 @@ const productsCart = (state = initialState ,action) => {
                 error: action.payload.error
             }
         default:
-            return state
+            return state;
     }
 }
 

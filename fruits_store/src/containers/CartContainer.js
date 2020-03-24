@@ -6,7 +6,7 @@ const mapStateToProps = state => {
     return {
         loading: state.cart.loading,
         error: state.cart.error,
-        products: state.cart.products
+        products: state.cart.items
     }
 }
 
