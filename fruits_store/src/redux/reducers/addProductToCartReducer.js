@@ -1,4 +1,4 @@
-import { LOAD_POST_REQUEST, LOAD_POST_SUCCESS, LOAD_POST_ERROR } from "../actions/actionTypes"
+import { LOAD_POST_PRODUCT_REQUEST, LOAD_POST_PRODUCT_SUCCESS, LOAD_POST_PRODUCT_ERROR } from "../actions/actionTypes"
 
 const initialState = {
     loading: false,
@@ -6,28 +6,28 @@ const initialState = {
     products: []
 }
 
-const addToCart = (state= initialState, action) => {
+const addProductToCartReducer = (state = initialState, action) => {
+    console.log('i am in addProductCartReducer');
     switch(action.type){
-        case LOAD_POST_REQUEST:
+        case LOAD_POST_PRODUCT_REQUEST:
             return {
                 ...state,
-                loading:true
+                loading: true
             }
-        case LOAD_POST_SUCCESS:
+        case LOAD_POST_PRODUCT_SUCCESS:
             return {
                 ...state,
-                loading: false,
-                products: action.payload.products
+                loading: false
             }
-        case LOAD_POST_ERROR:
+        case LOAD_POST_PRODUCT_ERROR:
             return {
                 ...state,
                 loading: false,
                 error: action.payload.error
             }
         default:
-            return state;
+            return state
     }
 }
 
-export default addToCart;
+export default addProductToCartReducer;

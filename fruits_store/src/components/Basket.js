@@ -5,7 +5,8 @@ export default class Basket extends React.Component {
         this.props.getCartProducts();
     }
     render(){
-        const {loading, error, products} = this.props;
+        console.log('productsList', this.props.productsList);
+        const {loading, error, productsList} = this.props;
         if(loading){
             return (<div>Loading...</div>)
         }
@@ -15,11 +16,9 @@ export default class Basket extends React.Component {
         return (
             <>
                 <div><b>Cart</b></div>
-                <div>{products.map(product => {
-                    return(
-                        <div key={product.id}>{product.name}</div>
-                    )
-                })}</div>
+                <div>
+                    {productsList.map(product => <div key={product.id}>{'product-id'+ product.id}</div>)}
+                </div>
             </>
         )
     }

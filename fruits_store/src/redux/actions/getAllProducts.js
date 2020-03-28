@@ -1,8 +1,10 @@
 import {FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR} from './actionTypes';
 
-const getAllProducts = () => dispatch => {
+const baseUrl = 'http://127.0.0.1:3001/products';
+
+const getAllProducts = (url) => dispatch => {
     dispatch(fetchProductsRequest());
-    fetch('http://127.0.0.1:3001/products')
+    fetch(url)
         .then(res => res.json())
         .then(products => {
             dispatch(fetchProductsSuccess(products))

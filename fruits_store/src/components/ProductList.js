@@ -7,7 +7,7 @@ export default class ProductList extends React.Component{
         this.props.getAllProducts();
     }
     render(){
-        const {loading, error, products} = this.props;
+        const { loading, error, products } = this.props;
         if(loading){
             return <div>Loading..</div>
         }
@@ -23,9 +23,9 @@ export default class ProductList extends React.Component{
                             <div key={product.id + index}>
                                 <Product
                                     product={product}
-                                    handleProductClick={this.props.handleProductClick}
                                 />
-                                <Button onClick={this.props.handleClickAddToCart} text="Add to Cart" />
+                                <Button onClick={this.props.handleProductClick} productId={product.id} text="Product Details" />
+                                <Button onClick={this.props.addProductToCart} product={product} text="Add to Cart" />
                             </div>
                         )
                     })

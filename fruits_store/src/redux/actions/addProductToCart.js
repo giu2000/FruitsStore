@@ -1,25 +1,24 @@
-import { LOAD_POST_REQUEST, LOAD_POST_SUCCESS, LOAD_POST_ERROR } from "./actionTypes";
+import { LOAD_POST_PRODUCT_REQUEST, LOAD_POST_PRODUCT_SUCCESS, LOAD_POST_PRODUCT_ERROR } from "./actionTypes"
+import getProductsCart from "./getCartProducts"
 
-
-const loadPostRequest = product => {
+const loadPostProductRequest = productToAdd => {
     return {
-        type: LOAD_POST_REQUEST,
-
-    }
-}
-
-const loadPostSuccess = product => {
-    return {
-        type: LOAD_POST_SUCCESS,
+        type: LOAD_POST_PRODUCT_REQUEST,
         payload: {
-            product
+            productToAdd
         }
     }
 }
 
-const loadPostError = error => {
+const loadPostProductSuccess = () => {
     return {
-        type: LOAD_POST_ERROR,
+        type: LOAD_POST_PRODUCT_SUCCESS,
+    }
+}
+
+const loadPostProductError = error => {
+    return {
+        type: LOAD_POST_PRODUCT_ERROR,
         payload: {
             error
         }
@@ -39,11 +38,12 @@ const optionsForPOSTRequest = product =>  {
 }
 
 const addProductToCart = product => dispatch => {
-    dispatch(loadPostRequest(product));
+    dispatch(loadPostProductRequest(product));
     fetch(baseUrl, optionsForPOSTRequest(product))
         .then(res => res.json())
-        .then(product => dispatch(loadPostSuccess()))
-        .catch(err => dispatch(loadPostError(err)))
+        .then(product => dispatch(loadPostProductSuccess()))
+        .catch(error => dispatch(loadPostProductError(error)));
+    dispatch(getProductsCart);
 }
 
-export default addProductToCart
+export default addProductToCart;
