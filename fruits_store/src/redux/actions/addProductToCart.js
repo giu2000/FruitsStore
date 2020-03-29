@@ -1,5 +1,5 @@
 import { ADD_PRODUCT_TO_CART_REQUEST, ADD_PRODUCT_TO_CART_SUCCESS, ADD_PRODUCT_TO_CART_ERROR } from "./actionTypes";
-import getCartProducts from './getCartProducts'
+import getCartProducts from './getCartProducts';
 
 const addProductToCartRequest = () => {
     return {

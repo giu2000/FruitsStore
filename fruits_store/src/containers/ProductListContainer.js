@@ -9,7 +9,7 @@ import addProductToCart from '../redux/actions/addProductTocart'
 const mapDispatchToProps = dispatch => {
     return {
         getAllProducts: () =>  dispatch(getAllProducts('http://127.0.0.1:3001/products')),
-        handleProductClick: productId => dispatch(getProductDetails(productId)),
+        getProductDetails: productId => dispatch(getProductDetails(productId)),
         addProductToCart: product => dispatch(addProductToCart(product))
     }
 } 

@@ -4,7 +4,8 @@ import React from 'react';
 // deve ricevere delle props e basta
 const Button = props => {
     return(
-        <button onClick={() => props.onClick(props.productId)} >
+
+        <button onClick={()=> props.onClick(props.product)}>
             {props.text}
         </button>
     )

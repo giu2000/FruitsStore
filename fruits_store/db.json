@@ -27,40 +27,16 @@
       "price": "100"
     },
     {
-      "id": "25",
-      "name": "peer",
-      "description": "peer description",
+      "id": "2",
+      "name": "apple",
+      "description": "apple description",
       "price": "200"
     },
     {
-      "id": "Kbw-d2g"
-    },
-    {
-      "id": "C99WN59"
-    },
-    {
-      "id": "wQf1-9q"
-    },
-    {
-      "id": "QjbAEaj"
-    },
-    {
-      "id": "9B0F61U"
-    },
-    {
-      "id": "4J0bcna"
-    },
-    {
-      "id": "k1I_vk2"
-    },
-    {
-      "id": "e0wwI9-"
-    },
-    {
-      "id": "Em7ZETO"
-    },
-    {
-      "id": "Q_cbTtm"
+      "id": "3",
+      "name": "lemon",
+      "description": "lemon description",
+      "price": "300"
     }
   ]
 }
