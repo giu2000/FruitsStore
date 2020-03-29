@@ -1,12 +1,13 @@
 import React from 'react';
 import Product from './Product';
+import Button from './Button';
 
 export default class ProductList extends React.Component{
     componentDidMount(){
         this.props.getAllProducts();
     }
     render(){
-        const {loading, error, products} = this.props;
+        const { loading, error, products } = this.props;
         if(loading){
             return <div>Loading..</div>
         }
@@ -18,12 +19,15 @@ export default class ProductList extends React.Component{
                 <div><b>Products List</b></div>
                 <ul className='productList'>
                     {products.map((product, index) => {
+                        console.log('product', product)
                         return (
-                            <Product
-                                key={product.id}
-                                product={product}
-                                handleProductClick={this.props.handleProductClick}
-                            />
+                            <div key={product.id + index}>
+                                <Product
+                                    product={product}
+                                />
+                                <Button onClick={this.props.getProductDetails} productId={product.id} product={product} text="Product Details" />
+                                <Button onClick={this.props.addProductToCart} product={product} text="Add to Cart" />
+                            </div>
                         )
                     })
                     }

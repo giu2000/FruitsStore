@@ -1,8 +1,13 @@
 import React from 'react';
 
-const Button = () => {
+// il Button non deve avere logica legata al Market
+// deve ricevere delle props e basta
+const Button = props => {
     return(
-        <button className="button-primary">Button element</button>
+
+        <button onClick={()=> props.onClick(props.product)}>
+            {props.text}
+        </button>
     )
 }
 

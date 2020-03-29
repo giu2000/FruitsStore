@@ -1,23 +1,42 @@
 {
-    "products": [
-      {
-        "id": "1",
-        "name": "orange",
-        "description": "orange description",
-        "price": "100"
-      },
-      {
-        "id": "2",
-        "name": "apple",
-        "description": "apple description",
-        "price": "200"
-      },
-      {
-        "id": "3",
-        "name": "lemon",
-        "description": "lemon description",
-        "price": "300"
-      }
-  
-    ]
-  }
+  "products": [
+    {
+      "id": "1",
+      "name": "orange",
+      "description": "orange description",
+      "price": "100"
+    },
+    {
+      "id": "2",
+      "name": "apple",
+      "description": "apple description",
+      "price": "200"
+    },
+    {
+      "id": "3",
+      "name": "lemon",
+      "description": "lemon description",
+      "price": "300"
+    }
+  ],
+  "cart": [
+    {
+      "id": "1",
+      "name": "orange",
+      "description": "orange description",
+      "price": "100"
+    },
+    {
+      "id": "2",
+      "name": "apple",
+      "description": "apple description",
+      "price": "200"
+    },
+    {
+      "id": "3",
+      "name": "lemon",
+      "description": "lemon description",
+      "price": "300"
+    }
+  ]
+}
