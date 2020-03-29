@@ -1,32 +1,32 @@
-import { LOAD_POST_PRODUCT_REQUEST, LOAD_POST_PRODUCT_SUCCESS, LOAD_POST_PRODUCT_ERROR } from "./actionTypes"
-import getProductsCart from "./getCartProducts"
+import { ADD_PRODUCT_TO_CART_REQUEST, ADD_PRODUCT_TO_CART_SUCCESS, ADD_PRODUCT_TO_CART_ERROR } from "./actionTypes";
+import getCartProducts from './getCartProducts'
 
-const loadPostProductRequest = productToAdd => {
+const addProductToCartRequest = () => {
     return {
-        type: LOAD_POST_PRODUCT_REQUEST,
+        type: ADD_PRODUCT_TO_CART_REQUEST
+    }
+}
+
+const addProductToCartSuccess = product => {
+    return {
+        type: ADD_PRODUCT_TO_CART_SUCCESS,
         payload: {
-            productToAdd
+            product: product
         }
     }
 }
 
-const loadPostProductSuccess = () => {
+const addProductToCartError = error => {
     return {
-        type: LOAD_POST_PRODUCT_SUCCESS,
-    }
-}
-
-const loadPostProductError = error => {
-    return {
-        type: LOAD_POST_PRODUCT_ERROR,
+        type: ADD_PRODUCT_TO_CART_ERROR,
         payload: {
-            error
+            error: error
         }
     }
 }
 
 const baseUrl = 'http://127.0.0.1:3001/cart';
-const optionsForPOSTRequest = product =>  {
+const optionsForPOSTRequest = product => {
     return {
         method: 'POST',
         headers: {
@@ -38,12 +38,12 @@ const optionsForPOSTRequest = product =>  {
 }
 
 const addProductToCart = product => dispatch => {
-    dispatch(loadPostProductRequest(product));
+    dispatch(addProductToCartRequest());
     fetch(baseUrl, optionsForPOSTRequest(product))
-        .then(res => res.json())
-        .then(product => dispatch(loadPostProductSuccess()))
-        .catch(error => dispatch(loadPostProductError(error)));
-    dispatch(getProductsCart);
+        .then(response => response.json())
+        .then(prdct => dispatch(addProductToCartSuccess(prdct)))
+        .catch(error => dispatch(addProductToCartError(error)));
+    dispatch(getCartProducts());
 }
 
 export default addProductToCart;

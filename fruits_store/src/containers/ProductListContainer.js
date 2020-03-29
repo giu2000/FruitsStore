@@ -2,14 +2,15 @@ import {connect} from 'react-redux';
 import getProductDetails from '../redux/actions/getProductDetails';
 import getAllProducts from '../redux/actions/getAllProducts';
 import ProductList from '../components/ProductList';
-import addProductToCart from '../redux/actions/addProductToCart';
+import addProductToCart from '../redux/actions/addProductTocart'
+
 
 
 const mapDispatchToProps = dispatch => {
     return {
         getAllProducts: () =>  dispatch(getAllProducts('http://127.0.0.1:3001/products')),
         handleProductClick: productId => dispatch(getProductDetails(productId)),
-        addProductToCart: productId => dispatch(addProductToCart(productId))
+        addProductToCart: product => dispatch(addProductToCart(product))
     }
 } 
 
