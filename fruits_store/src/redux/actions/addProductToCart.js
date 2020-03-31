@@ -1,4 +1,4 @@
-import { ADD_PRODUCT_TO_CART_REQUEST, ADD_PRODUCT_TO_CART_SUCCESS, ADD_PRODUCT_TO_CART_ERROR } from "./actionTypes";
+import { ADD_PRODUCT_TO_CART_REQUEST, ADD_PRODUCT_TO_CART_SUCCESS, ADD_PRODUCT_TO_CART_ERROR, ADD_PRODUCT_QUANTITY_IN_CART } from "./actionTypes";
 import getCartProducts from './getCartProducts';
 
 const addProductToCartRequest = () => {
@@ -25,6 +25,17 @@ const addProductToCartError = error => {
     }
 }
 
+
+const addProductQuantityCart = (id,quantity) => {
+    return {
+        type: ADD_PRODUCT_QUANTITY_IN_CART,
+        payload: {
+            id: id,
+            quantity: quantity
+        }
+    }
+}
+
 const baseUrl = 'http://127.0.0.1:3001/cart';
 const optionsForPOSTRequest = product => {
     return {
@@ -38,12 +49,21 @@ const optionsForPOSTRequest = product => {
     }
 }
 
-const addProductToCart = product => dispatch => {
-    dispatch(addProductToCartRequest());
-    fetch(baseUrl, optionsForPOSTRequest(product))
+const addProductToCart = (product) => (dispatch, getState) => {
+    console.log('getState', getState());
+    if(getState().cart.productsList.products.filter(prdct => prdct.id === product.id) !== []){
+        console.log('elemento già presente');
+        console.log('productID', product.id)
+        dispatch(addProductQuantityCart(5))
+    }
+    else{
+        dispatch(addProductToCartRequest());
+        fetch(baseUrl, optionsForPOSTRequest(product))
         .then(response => response.json())
         .then(prdct => dispatch(addProductToCartSuccess(prdct)))
-        .catch(error => dispatch(addProductToCartError(error)));
+        .catch(error => dispatch(addProductToCartError(console.log(error))));  
+    }
+
     dispatch(getCartProducts());
 }
 
