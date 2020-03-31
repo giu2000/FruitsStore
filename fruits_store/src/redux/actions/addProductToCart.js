@@ -33,7 +33,8 @@ const optionsForPOSTRequest = product => {
             'Content-type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify(product)
+        // body: JSON.stringify(product)
+        body: JSON.stringify({...product, quantity: 1})
     }
 }
 

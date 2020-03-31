@@ -4,7 +4,6 @@ import getCartProducts from "../redux/actions/getCartProducts";
 
 
 const mapStateToProps = state => {
-    console.log(state.cart.productsList)
     return {
         productsListLoading: state.cart.productsList.loading,
         productsListError: state.cart.productsList.error,

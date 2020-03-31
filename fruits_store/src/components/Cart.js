@@ -12,7 +12,10 @@ export default class Cart extends React.Component{
                     {
                         this.props.productsList.map(product => {
                             return (
-                                <div key={product.id}>{product.name}</div>
+                                <>
+                                    <div key={product.id}>{product.name} | {product.quantity}</div>
+                                </>
+                                
                             )
                         })
                     }
