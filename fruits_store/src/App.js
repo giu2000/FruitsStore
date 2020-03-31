@@ -3,6 +3,7 @@ import React from 'react';
 import ProductDetailsContainer from './containers/ProductDetailsContainer';
 import CartContainer from './containers/CartContainer';
 
+import './App.css';
 
 const App = () => {
   return (

@@ -3,35 +3,37 @@ import Product from './Product';
 import Button from './Button';
 
 export default class ProductList extends React.Component{
+
     componentDidMount(){
         this.props.getAllProducts();
     }
+
     render(){
-        const { loading, error, products } = this.props;
-        if(loading){
+        const { isLoading, error, products, getProduct, addProductToCart } = this.props;
+        if(isLoading){
             return <div>Loading..</div>
         }
         if(error){
-            return <div>Error...</div>
+            return <div>{error}</div>
         }
         return(
             <>
-                <div><b>Products List</b></div>
-                <ul className='productList'>
+                <h5>Products List</h5>
+                <div className="container">
+                    <div className="row" >
                     {products.map((product, index) => {
-                        console.log('product', product)
                         return (
-                            <div key={product.id + index}>
-                                <Product
-                                    product={product}
-                                />
-                                <Button onClick={this.props.getProductDetails} productId={product.id} product={product} text="Product Details" />
-                                <Button onClick={this.props.addProductToCart} product={product} text="Add to Cart" />
-                            </div>
-                        )
-                    })
+                                <div key={product.id + index} className="four columns product-card">
+                                    <Product product={product} />
+                                    <hr />
+                                    <Button onClick={() => getProduct(product.id)} text="Details" />
+                                    <Button onClick={() => addProductToCart(product)} customClass="button-primary" text="Add to Cart" />
+                                </div>
+                            )
+                        })
                     }
-                </ul>
+                    </div>
+                </div>
             </>
         )
     }

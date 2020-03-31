@@ -1,18 +1,17 @@
-import { GET_CART_PRODUCTS_REQUEST, GET_CART_PRODUCTS_SUCCESS, GET_CART_PRODUCTS_ERROR, ADD_PRODUCT_TO_CART_REQUEST, ADD_PRODUCT_TO_CART_SUCCESS, ADD_PRODUCT_TO_CART_ERROR, ADD_PRODUCT_QUANTITY_IN_CART } from "../actions/actionTypes"
+import {
+    GET_CART_PRODUCTS_REQUEST,
+    GET_CART_PRODUCTS_SUCCESS,
+    GET_CART_PRODUCTS_ERROR,
+    ADD_PRODUCT_TO_CART_REQUEST,
+    ADD_PRODUCT_TO_CART_SUCCESS,
+    ADD_PRODUCT_TO_CART_ERROR,
+} from "../actions/actionTypes"
 
 //initial state for cart.productsList
 const initialState = {
-    productsList: {
-        laoding: false,
-        error: null,
-        products: []
-    },
-    newProduct: {
-        loading: false,
-        error: null,
-        product: null,
-        quantity: 0
-    }
+    isLoading: false,
+    error: '',
+    products: []
 }
 
 const cartReducer = (state = initialState, action) => {
@@ -20,61 +19,42 @@ const cartReducer = (state = initialState, action) => {
         case GET_CART_PRODUCTS_REQUEST:
             return {
                 ...state,
-                productsList: {
-                    loading: true,
-                    error: null,
-                    products: []
-                }
+                isLoading: true,
+                error: '',
+                products: []
             }
         case GET_CART_PRODUCTS_SUCCESS:
             return {
                 ...state,
-                productsList:{
-                    loading: false,
-                    error: null,
-                    products: action.payload.products
-                }
+                isLoading: false,
+                error: '',
+                products: action.payload.products
             }
         case GET_CART_PRODUCTS_ERROR:
             return {
                 ...state,
-                productsList: {
-                    laoding: false,
-                    error: action.payload.error
-                }
-            }
-        case ADD_PRODUCT_QUANTITY_IN_CART:
-            return {
-                ...state,
-                newProduct: {
-                    quantity: action.payload.quantity
-                }
+                isLoading: false,
+                error: action.payload.error
             }
         case ADD_PRODUCT_TO_CART_REQUEST:
             return {
                 ...state,
-                newProduct: {
-                    loading: true,
-                    error: null,
-                    product: null
-                }
+                isLoading: true,
+                error: '',
+                product: {}
             }
         case ADD_PRODUCT_TO_CART_SUCCESS:
             return {
                 ...state,
-                newProduct: {
-                    loading: false,
-                    error: null,
-                    product: action.payload.product
-                }
+                isLoading: false,
+                error: '',
+                product: action.payload.product
             }
         case ADD_PRODUCT_TO_CART_ERROR:
             return {
                 ...state,
-                newProduct: {
-                    loading: false,
-                    error: action.payload.error
-                }
+                isLoading: false,
+                error: action.payload.error
             }
         default:
             return state

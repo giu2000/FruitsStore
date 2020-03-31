@@ -2,9 +2,9 @@ import {FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR} fr
 
 const baseUrl = 'http://127.0.0.1:3001/products';
 
-const getAllProducts = (url) => dispatch => {
+const getAllProducts = () => dispatch => {
     dispatch(fetchProductsRequest());
-    fetch(url)
+    fetch(baseUrl)
         .then(res => res.json())
         .then(products => {
             dispatch(fetchProductsSuccess(products))
