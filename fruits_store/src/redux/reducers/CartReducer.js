@@ -1,4 +1,4 @@
-import { GET_CART_PRODUCTS_REQUEST, GET_CART_PRODUCTS_SUCCESS, GET_CART_PRODUCTS_ERROR, ADD_PRODUCT_TO_CART_REQUEST, ADD_PRODUCT_TO_CART_SUCCESS, ADD_PRODUCT_TO_CART_ERROR } from "../actions/actionTypes"
+import { GET_CART_PRODUCTS_REQUEST, GET_CART_PRODUCTS_SUCCESS, GET_CART_PRODUCTS_ERROR, ADD_PRODUCT_TO_CART_REQUEST, ADD_PRODUCT_TO_CART_SUCCESS, ADD_PRODUCT_TO_CART_ERROR, ADD_PRODUCT_QUANTITY_IN_CART } from "../actions/actionTypes"
 
 //initial state for cart.productsList
 const initialState = {
@@ -10,7 +10,8 @@ const initialState = {
     newProduct: {
         loading: false,
         error: null,
-        product: null
+        product: null,
+        quantity: 0
     }
 }
 
@@ -40,7 +41,13 @@ const cartReducer = (state = initialState, action) => {
                 productsList: {
                     laoding: false,
                     error: action.payload.error
-
+                }
+            }
+        case ADD_PRODUCT_QUANTITY_IN_CART:
+            return {
+                ...state,
+                newProduct: {
+                    quantity: action.payload.quantity
                 }
             }
         case ADD_PRODUCT_TO_CART_REQUEST:
