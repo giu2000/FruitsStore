@@ -1,40 +1,39 @@
 import { 
-    GET_CART_PRODUCTS_REQUEST, 
-    GET_CART_PRODUCTS_SUCCESS, 
-    GET_CART_PRODUCTS_ERROR 
+    FETCH_CART_PRODUCTS_REQUETS, 
+    FETCH_CART_PRODUCTS_SUCCESS, 
+    FETCH_CART_PRODUCTS_ERROR 
 } from "./actionTypes"
 
-const getCartProductsRequest = () => {
+const fetchCartProductsRequest = () => {
     return {
-        type: GET_CART_PRODUCTS_REQUEST
+        type: FETCH_CART_PRODUCTS_REQUETS
     }
 }
 
-const getCartProductsSuccess = products => {
+const fetchCartProductsSuccess = products => {
     return {
-        type: GET_CART_PRODUCTS_SUCCESS,
+        type: FETCH_CART_PRODUCTS_SUCCESS,
         payload: {
             products
         }
     }
 }
 
-const getCartProductsError = error => {
+const fetchCartProductsError = error => {
     return {
-        type: GET_CART_PRODUCTS_ERROR,
+        type: FETCH_CART_PRODUCTS_ERROR,
         payload: {
             error
         }
     }
 }
 
-// const baseUrl = 'http://127.0.0.1:3001/cart';
 const getCartProducts = url => dispatch => {
-    dispatch(getCartProductsRequest());
+    dispatch(fetchCartProductsRequest());
     fetch(url)
         .then(response => response.json())
-        .then(products => dispatch(getCartProductsSuccess(products)))
-        .catch(error => dispatch(getCartProductsError(error)))
+        .then(products => dispatch(fetchCartProductsSuccess(products)))
+        .catch(error => dispatch(fetchCartProductsError(error)))
 }
 
 export default getCartProducts;

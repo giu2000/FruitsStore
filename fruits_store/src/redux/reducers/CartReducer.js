@@ -1,58 +1,34 @@
 import { 
-    GET_CART_PRODUCTS_REQUEST, 
-    GET_CART_PRODUCTS_SUCCESS, 
-    GET_CART_PRODUCTS_ERROR, 
-    ADD_PRODUCT_TO_CART_REQUEST, 
-    ADD_PRODUCT_TO_CART_SUCCESS, 
-    ADD_PRODUCT_TO_CART_ERROR
- } from "../actions/actionTypes"
+    FETCH_CART_PRODUCTS_REQUETS, 
+    FETCH_CART_PRODUCTS_SUCCESS, 
+    FETCH_PRODUCTS_ERROR 
+} from "../actions/actionTypes"
 
-//initial state for cart.productsList
 const initialState = {
     isLoading: false,
-    error: null,
+    error: "",
     products: []
 }
 
 const cartReducer = (state = initialState, action) => {
-    console.log('actionType', action.type)
     switch(action.type){
-        case GET_CART_PRODUCTS_REQUEST:
+        case FETCH_CART_PRODUCTS_REQUETS:
             return {
                 ...state,
-                isLoading: true,
+                isLoading: true
             }
-        case GET_CART_PRODUCTS_SUCCESS:
-            console.log('reducer cart', action.payload.products)
+        case FETCH_CART_PRODUCTS_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
-                products: action.paylod.products
-                
+                products: action.payload.products
             }
-        case GET_CART_PRODUCTS_ERROR:
+        case FETCH_PRODUCTS_ERROR:
             return {
                 ...state,
                 isLoading: false,
                 error: action.payload.error
             }
-
-        // case ADD_PRODUCT_TO_CART_REQUEST:
-        //     return {
-        //         ...state,
-        //         isLoading: true
-        //     }
-        // case ADD_PRODUCT_TO_CART_SUCCESS:
-        //     return {
-        //         ...state,
-        //         isLoading: false
-        //     }
-        // case ADD_PRODUCT_TO_CART_ERROR:
-        //     return {
-        //         ...state,
-        //         isLoading: false,
-        //         error: action.payload.error
-        //     }
         default:
             return state
     }

@@ -7,10 +7,12 @@ const ProductDetails = props => {
             <div><b>Product Details</b></div>
             <table>
                 <thead>
+                    <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Price</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>

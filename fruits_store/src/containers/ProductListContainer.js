@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import getProduct from '../redux/actions/getProduct';
 import getAllProducts from '../redux/actions/getAllProducts';
 import ProductList from '../components/ProductList';
-import addProductToCart from '../redux/actions/addProductToCart'
+// import addProductToCart from '../redux/actions/addProductToCart'
 
 
 
