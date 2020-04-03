@@ -1,19 +1,26 @@
 import React from 'react';
 
-const details = product => {
-    return Object.keys(product[0]).map(key => {
-        return (
-            <div key={key}>{`${key}: ${product[0][key]}`}</div>
-        )
-    })
-}
-
 const ProductDetails = props => {
-    console.log('product details', props.selectedProduct)
+    const { product } = props;
     return (
         <div>
             <div><b>Product Details</b></div>
-            <div>{props.selectedProduct !== '' ? details(props.products.filter(prd => props.selectedProduct.id === prd.id)) : 'seleziona un prodotto '}</div>
+            <table>
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{product.id}</td>
+                        <td>{product.name}</td>
+                        <td>{product.description}</td>
+                        <td>{product.price}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     )
 }

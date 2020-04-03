@@ -5,15 +5,13 @@ import getCartProducts from "../redux/actions/getCartProducts";
 
 const mapStateToProps = state => {
     return {
-        productsListLoading: state.cart.productsList.loading,
-        productsListError: state.cart.productsList.error,
-        productsList: state.cart.productsList.products
+      cart: state.cart
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getCartProducts: () => dispatch(getCartProducts())
+        getCartProducts: () => dispatch(getCartProducts('http://127.0.0.1:3001/cart'))
     }
 }
 

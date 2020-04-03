@@ -1,4 +1,8 @@
-import { GET_CART_PRODUCTS_REQUEST, GET_CART_PRODUCTS_SUCCESS, GET_CART_PRODUCTS_ERROR } from "./actionTypes"
+import { 
+    GET_CART_PRODUCTS_REQUEST, 
+    GET_CART_PRODUCTS_SUCCESS, 
+    GET_CART_PRODUCTS_ERROR 
+} from "./actionTypes"
 
 const getCartProductsRequest = () => {
     return {
@@ -25,7 +29,7 @@ const getCartProductsError = error => {
 }
 
 const baseUrl = 'http://127.0.0.1:3001/cart';
-const getCartProducts = () => dispatch => {
+const getCartProducts = url => dispatch => {
     dispatch(getCartProductsRequest());
     fetch(baseUrl)
         .then(response => response.json())
