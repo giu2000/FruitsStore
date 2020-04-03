@@ -26,7 +26,7 @@ export default class ProductList extends React.Component{
                                     product={product}
                                 />
                                 <Button onClick={() => this.props.getProduct(product.id) } text="Product Details" />
-                                <Button onClick={() => this.props.addProductToCart(product)} product={product} text="Add to Cart" />
+                                {/* <Button onClick={() => this.props.addProductToCart(product)} product={product} text="Add to Cart" /> */}
                             </div>
                         )
                     })

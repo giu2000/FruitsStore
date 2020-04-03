@@ -21,15 +21,12 @@ const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true,
-                error: null,
-                products: []
             }
         case GET_CART_PRODUCTS_SUCCESS:
             console.log('reducer cart', action.payload.products)
             return {
                 ...state,
                 isLoading: false,
-                error:null,
                 products: action.paylod.products
                 
             }
@@ -40,22 +37,22 @@ const cartReducer = (state = initialState, action) => {
                 error: action.payload.error
             }
 
-        case ADD_PRODUCT_TO_CART_REQUEST:
-            return {
-                ...state,
-                isLoading: true
-            }
-        case ADD_PRODUCT_TO_CART_SUCCESS:
-            return {
-                ...state,
-                isLoading: false
-            }
-        case ADD_PRODUCT_TO_CART_ERROR:
-            return {
-                ...state,
-                isLoading: false,
-                error: action.payload.error
-            }
+        // case ADD_PRODUCT_TO_CART_REQUEST:
+        //     return {
+        //         ...state,
+        //         isLoading: true
+        //     }
+        // case ADD_PRODUCT_TO_CART_SUCCESS:
+        //     return {
+        //         ...state,
+        //         isLoading: false
+        //     }
+        // case ADD_PRODUCT_TO_CART_ERROR:
+        //     return {
+        //         ...state,
+        //         isLoading: false,
+        //         error: action.payload.error
+        //     }
         default:
             return state
     }

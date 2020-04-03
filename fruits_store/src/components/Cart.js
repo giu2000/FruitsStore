@@ -6,14 +6,18 @@ export default class Cart extends React.Component{
         console.log('component did mount', this.props.cart)
     }
     render(){
-        console.log(this.props.cart)
-        const { cart } = this.props;
-        console.log('cart',cart)
+        const { cart: {isLoading, error, products } } = this.props;
+        if(isLoading){
+            return <div>Loading..</div>
+        }
+        if(error){
+            return <div>Error...</div>
+        }
         return(
             <div className='cart'>
                 <h5>Cart</h5>
                 <div>
-                    { !cart.products.length ? 
+                    { !products.length ? 
                         <p>Cart empty</p>
                         : <table>
                             <thead>
@@ -26,7 +30,7 @@ export default class Cart extends React.Component{
                             </thead>
                             <tbody>
                                 {
-                                    cart.products.map(product => {
+                                    products.map(product => {
                                         return (
                                             <tr key={product.id}>
                                                 <td>{product.id}</td>

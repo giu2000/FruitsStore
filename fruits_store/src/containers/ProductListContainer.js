@@ -10,7 +10,7 @@ const mapDispatchToProps = dispatch => {
     return {
         getAllProducts: () =>  dispatch(getAllProducts('http://127.0.0.1:3001/products')),
         getProduct: productId => dispatch(getProduct(productId)),
-        addProductToCart: product => dispatch(addProductToCart(product))
+        // addProductToCart: product => dispatch(addProductToCart(product))
     }
 } 
 

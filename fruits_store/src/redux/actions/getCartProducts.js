@@ -28,10 +28,10 @@ const getCartProductsError = error => {
     }
 }
 
-const baseUrl = 'http://127.0.0.1:3001/cart';
+// const baseUrl = 'http://127.0.0.1:3001/cart';
 const getCartProducts = url => dispatch => {
     dispatch(getCartProductsRequest());
-    fetch(baseUrl)
+    fetch(url)
         .then(response => response.json())
         .then(products => dispatch(getCartProductsSuccess(products)))
         .catch(error => dispatch(getCartProductsError(error)))
