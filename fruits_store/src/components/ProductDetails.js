@@ -19,7 +19,7 @@ const ProductDetails = props => {
                         <td>{product.id}</td>
                         <td>{product.name}</td>
                         <td>{product.description}</td>
-                        <td>{product.price}</td>
+                        <td><i>$ {product.price}</i></td>
                     </tr>
                 </tbody>
             </table>
@@ -28,6 +28,3 @@ const ProductDetails = props => {
 }
 
 export default ProductDetails;
-
-
-/*<div>{props.selectedProduct !== '' ? details(props.products[props.selectedProduct-1]) : 'seleziona un prodotto '}</div>*/

@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import productsReducer from '../redux/reducers/productsReducer';
 
 export default class Cart extends React.Component{
     componentDidMount(){
@@ -34,7 +32,7 @@ export default class Cart extends React.Component{
                                 <tr key={product.id}>
                                     <td>{product.id}</td>
                                     <td>{product.name}</td>
-                                    <td>{product.price}</td>
+                                    <td><i>$ {product.price}</i></td>
                                     <td>{product.quantity}</td>
                                 </tr>
                             )
