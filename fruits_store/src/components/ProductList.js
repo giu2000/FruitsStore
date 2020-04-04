@@ -16,7 +16,7 @@ export default class ProductList extends React.Component{
         }
         return(
             <>
-                <div><b>Products List</b></div>
+                <h5>Products List</h5>
                 <ul className='productList'>
                     {products.map((product, index) => {
                         return (

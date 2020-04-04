@@ -4,7 +4,7 @@ const ProductDetails = props => {
     const { product } = props;
     return (
         <div>
-            <div><b>Product Details</b></div>
+            <h5>Product Details</h5>
             <table>
                 <thead>
                     <tr>
