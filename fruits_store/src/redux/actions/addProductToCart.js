@@ -1,4 +1,8 @@
-import { ADD_PRODUCT_TO_CART_REQUEST, ADD_PRODUCT_TO_CART_SUCCESS, ADD_PRODUCT_TO_CART_ERROR } from "./actionTypes";
+import { 
+    ADD_PRODUCT_TO_CART_REQUEST, 
+    ADD_PRODUCT_TO_CART_SUCCESS, 
+    ADD_PRODUCT_TO_CART_ERROR 
+} from "./actionTypes";
 import getCartProducts from './getCartProducts';
 
 const addProductToCartRequest = () => {
@@ -7,12 +11,9 @@ const addProductToCartRequest = () => {
     }
 }
 
-const addProductToCartSuccess = product => {
+const addProductToCartSuccess = () => {
     return {
-        type: ADD_PRODUCT_TO_CART_SUCCESS,
-        payload: {
-            product: product
-        }
+        type: ADD_PRODUCT_TO_CART_SUCCESS
     }
 }
 
@@ -20,30 +21,51 @@ const addProductToCartError = error => {
     return {
         type: ADD_PRODUCT_TO_CART_ERROR,
         payload: {
-            error: error
+            error
         }
     }
 }
 
+const getCartProductIndex = (cart, id) => cart.findIndex(prdct => prdct.id === id); 
 const baseUrl = 'http://127.0.0.1:3001/cart';
-const optionsForPOSTRequest = product => {
-    return {
-        method: 'POST',
+
+const addProductToCart = product => (dispatch, getState) => {
+    const { cart } = getState();
+    const index = getCartProductIndex(cart.products, product.id);
+    
+    let endpoint, method, qty;
+
+    dispatch(addProductToCartRequest());
+
+    if(index > -1){
+        endpoint = `${baseUrl}/${product.id}`;
+        method = 'PUT';
+        qty = cart.products[index].quantity
+    }
+    else {
+        endpoint = baseUrl;
+        method = 'POST';
+        qty = 0;
+    }
+
+    fetch(endpoint, {
+        method,
         headers: {
             'Content-type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify(product)
-    }
-}
-
-const addProductToCart = product => dispatch => {
-    dispatch(addProductToCartRequest());
-    fetch(baseUrl, optionsForPOSTRequest(product))
-        .then(response => response.json())
-        .then(prdct => dispatch(addProductToCartSuccess(prdct)))
-        .catch(error => dispatch(addProductToCartError(error)));
-    dispatch(getCartProducts());
+        body: JSON.stringify({
+            ...product,
+            quantity: qty+1
+        })
+        
+    })
+    .then(response => {
+        dispatch(addProductToCartSuccess());
+        dispatch(getCartProducts(baseUrl));
+        }
+    )
+    .catch(error => dispatch(addProductToCartError))
 }
 
 export default addProductToCart;

@@ -1,20 +1,16 @@
-import { connect } from "react-redux";
-import Cart from '../components/Cart';
 import getCartProducts from "../redux/actions/getCartProducts";
-
+import { connect } from "react-redux";
+import Cart from "../components/Cart";
 
 const mapStateToProps = state => {
-    console.log(state.cart.productsList)
     return {
-        productsListLoading: state.cart.productsList.loading,
-        productsListError: state.cart.productsList.error,
-        productsList: state.cart.productsList.products
+        cart: state.cart
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getCartProducts: () => dispatch(getCartProducts())
+        getCartProducts: () => dispatch(getCartProducts('http://127.0.0.1:3001/cart'))
     }
 }
 
