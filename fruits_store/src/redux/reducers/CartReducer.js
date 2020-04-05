@@ -7,13 +7,15 @@ import {
     ADD_PRODUCT_TO_CART_SUCCESS,
     REMOVE_PRODUCT_FROM_CART_REQUEST,
     REMOVE_PRODUCT_FROM_CART_ERROR,
-    REMOVE_PRODUCT_FROM_CART_SUCCESS
+    REMOVE_PRODUCT_FROM_CART_SUCCESS,
+    UPDATE_CART_TOTAL_PRICE
 } from "../actions/actionTypes"
 
 const initialState = {
     isLoading: false,
     error: "",
-    products: []
+    products: [],
+    totalPrice: 0
 }
 
 const cartReducer = (state = initialState, action) => {
@@ -45,6 +47,13 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 error: ""
+            }
+        case UPDATE_CART_TOTAL_PRICE:
+            return{
+                ...state,
+                isLoading: false,
+                error: "",
+                totalPrice: action.payload.totalPrice
             }
         default:
             return state
