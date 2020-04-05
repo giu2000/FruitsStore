@@ -6,7 +6,7 @@ export default class Cart extends React.Component{
         this.props.getCartProducts()
     }
     render(){
-        const { cart: { isLoading, error, products } } = this.props;
+        const { cart: { isLoading, error, products, totalPrice } } = this.props;
         if(isLoading){
             return (
                 <div>Loading...</div>)
@@ -47,6 +47,8 @@ export default class Cart extends React.Component{
                         }
                     </tbody>
                 </table>
+                <h6>Total:</h6>
+                <div>{totalPrice}</div>
             </>
         )
     }
