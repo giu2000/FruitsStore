@@ -25,14 +25,21 @@
       "name": "lemon",
       "description": "lemon description",
       "price": "300",
-      "quantity": 3
+      "quantity": 4
     },
     {
       "id": "1",
       "name": "orange",
       "description": "orange description",
       "price": "100",
-      "quantity": 2
+      "quantity": 4
+    },
+    {
+      "id": "2",
+      "name": "apple",
+      "description": "apple description",
+      "price": "200",
+      "quantity": 1
     }
   ]
 }
