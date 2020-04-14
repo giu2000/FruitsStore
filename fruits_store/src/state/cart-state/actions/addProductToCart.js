@@ -2,8 +2,9 @@ import {
     ADD_PRODUCT_TO_CART_REQUEST, 
     ADD_PRODUCT_TO_CART_SUCCESS, 
     ADD_PRODUCT_TO_CART_ERROR 
-} from "./actionTypes";
-import getCartProducts from './getCartProducts';
+} from "../types/ActionTypes";
+
+import fetchCartProducts from './fetchCartProducts';
 
 const addProductToCartRequest = () => {
     return {
@@ -62,7 +63,7 @@ const addProductToCart = product => (dispatch, getState) => {
     })
     .then(response => {
         dispatch(addProductToCartSuccess());
-        dispatch(getCartProducts(baseUrl));
+        dispatch(fetchCartProducts(baseUrl));
         }
     )
     .catch(error => dispatch(addProductToCartError))

@@ -1,5 +1,5 @@
 
-import { UPDATE_CART_TOTAL_PRICE } from "./actionTypes";
+import { UPDATE_CART_TOTAL_PRICE } from "../types/ActionTypes";
 
 const updateCartTotalPrice = totalPrice => {
     return {

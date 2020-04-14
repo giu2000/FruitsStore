@@ -2,9 +2,9 @@ import {
     REMOVE_PRODUCT_FROM_CART_REQUEST, 
     REMOVE_PRODUCT_FROM_CART_SUCCESS, 
     REMOVE_PRODUCT_FROM_CART_ERROR 
-} from "./actionTypes";
+} from "../types/ActionTypes";
 
-import getCartProducts from './getCartProducts';
+import fetchCartProducts from './fetchCartProducts';
 
 const removeProductFromCartRequest = () => {
     return {
@@ -64,7 +64,7 @@ const removeProductFromCart = product => (dispatch, getState) => {
     .then(response => response.json())
     .then(product => {
         dispatch(removeProductFromCartSuccess());
-        dispatch(getCartProducts(baseUrl));
+        dispatch(fetchCartProducts(baseUrl));
         } 
     )
     .catch(error => dispatch(removeProductFromCartError(error)));

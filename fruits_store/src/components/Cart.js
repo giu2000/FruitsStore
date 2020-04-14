@@ -3,7 +3,7 @@ import Button from './Button';
 
 export default class Cart extends React.Component{
     componentDidMount(){
-        this.props.getCartProducts()
+        this.props.fetchCartProducts()
     }
     render(){
         const { cart: { isLoading, error, products, totalPrice } } = this.props;

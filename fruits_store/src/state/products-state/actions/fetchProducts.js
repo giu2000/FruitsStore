@@ -2,9 +2,9 @@ import {
     FETCH_PRODUCTS_REQUEST, 
     FETCH_PRODUCTS_SUCCESS, 
     FETCH_PRODUCTS_ERROR 
-} from './actionTypes';
+} from '../types/ActionTypes';
 
-const getAllProducts = url => dispatch => {
+const fetchProducts = url => dispatch => {
     dispatch(fetchProductsRequest());
     fetch(url)
         .then(res => res.json())
@@ -36,4 +36,4 @@ const fetchProductsError = error => {
     }
 }
 
-export default getAllProducts;
+export default fetchProducts;

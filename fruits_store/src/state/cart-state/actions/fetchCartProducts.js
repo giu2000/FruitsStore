@@ -2,7 +2,8 @@ import {
     FETCH_CART_PRODUCTS_REQUETS, 
     FETCH_CART_PRODUCTS_SUCCESS, 
     FETCH_CART_PRODUCTS_ERROR 
-} from "./actionTypes";
+} from "../types/ActionTypes";
+
 import updateCartTotalPrice from './updateCartTotalPrice';
 
 const fetchCartProductsRequest = () => {
@@ -32,7 +33,7 @@ const fetchCartProductsError = error => {
 
 const getTotalPrice = (total, product) => total + product.price * product.quantity;
 
-const getCartProducts = url => dispatch => {
+const fetchCartProducts = url => dispatch => {
     dispatch(fetchCartProductsRequest());
     fetch(url)
         .then(response => response.json())
@@ -44,4 +45,4 @@ const getCartProducts = url => dispatch => {
         .catch(error => dispatch(fetchCartProductsError(error)))
 }
 
-export default getCartProducts;
+export default fetchCartProducts;

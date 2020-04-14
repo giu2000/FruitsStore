@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import ProductDetailsLink from "../components/ProductDetailsLink";
-import getProduct from '../redux/actions/getProduct';
+import ProductDetailsLink from "../components/CustomLink";
+import fetchProductDetails from '../state/product-details-state/actions/fetchProductDetails';
 
 const mapStateToProps = state => {
     return {
@@ -10,7 +10,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
 
-        getProduct: productId => dispatch(getProduct(productId)),
+        fetchProductDetails: productId => dispatch(fetchProductDetails(productId)),
     }
 }
 

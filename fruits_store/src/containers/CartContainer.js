@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import Cart from "../components/Cart";
-import removeProductFromCart from "../redux/actions/removeProductFromCart";
-import addProductToCart from "../redux/actions/addProductToCart";
-import getCartProducts from "../redux/actions/getCartProducts";
+import removeProductFromCart from "../state/cart-state/actions/removeProductFromCart";
+import addProductToCart from "../state/cart-state/actions/addProductToCart";
+import fetchCartProducts from "../state/cart-state/actions/fetchCartProducts";
 
 const mapStateToProps = state => {
     return {
@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getCartProducts: () => dispatch(getCartProducts('http://127.0.0.1:3001/cart')),
+        fetchCartProducts: () => dispatch(fetchCartProducts('http://127.0.0.1:3001/cart')),
         addProductToCart: product => dispatch(addProductToCart(product)),
         removeProductFromCart: product => dispatch(removeProductFromCart(product))
     }

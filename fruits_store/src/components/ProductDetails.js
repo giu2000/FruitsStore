@@ -4,7 +4,7 @@ import React from 'react';
 export default class ProductDetails extends React.Component{
     componentDidMount(){
         // this.props.getProduct(this.props.productId)
-        this.props.getProduct()
+        this.props.fetchProductDetails()
     }
  
     render(){

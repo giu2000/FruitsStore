@@ -1,12 +1,15 @@
 import { 
-    FETCH_PRODUCTS_SUCCESS, 
-    FETCH_PRODUCTS_REQUEST, 
-    FETCH_PRODUCTS_ERROR,
-    FETCH_PRODUCT_REQUEST,
-    FETCH_PRODUCT_ERROR,
-    FETCH_PRODUCT_SUCCESS, 
+    FETCH_PRODUCT_DETAILS_REQUEST,
+    FETCH_PRODUCT_DETAILS_ERROR,
+    FETCH_PRODUCT_DETAILS_SUCCESS, 
 
-} from "../actions/actionTypes";
+} from "../../product-details-state/types/ActionTypes";
+
+import {
+    FETCH_PRODUCTS_REQUEST,
+    FETCH_PRODUCTS_SUCCESS,
+    FETCH_PRODUCTS_ERROR
+} from '../types/ActionTypes';
 
 const initialState = {
     isLoading: false,
@@ -18,7 +21,7 @@ const initialState = {
 const productsReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_PRODUCTS_REQUEST:
-        case FETCH_PRODUCT_REQUEST:
+        case FETCH_PRODUCT_DETAILS_REQUEST:
             return {
                 ...state,
                 isLoading: true
@@ -30,13 +33,13 @@ const productsReducer = (state = initialState, action) => {
                 products: action.payload.products
             }
         case FETCH_PRODUCTS_ERROR:
-        case FETCH_PRODUCT_ERROR:
+        case FETCH_PRODUCT_DETAILS_ERROR:
             return {
                 ...state,
-                isLoadign: false,
+                isLoading: false,
                 error: action.payload.error
             }
-        case FETCH_PRODUCT_SUCCESS:
+        case FETCH_PRODUCT_DETAILS_SUCCESS:
             return {
                 ...state,
                 isLoading: false,

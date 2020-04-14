@@ -1,22 +1,17 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 const CustomLink = props => {
-    const { pathLink, text, productId } = props;
-    return(
-        <NavLink
-            exact
-            to={productId ? `/product_details/${productId}`: pathLink}
-            activeStyle={
-                {
-                    textDecoration: 'none',
-                    color: 'black'
-                }
-            }
-        >
-            {text}
-        </NavLink>
+    const {pathLink, text} = props;
+    return (
+        <Link to={pathLink}>{text}</Link>
     )
+}
+
+CustomLink.propTypes = {
+    pathLink: PropTypes.string.isRequired,
+    text: PropTypes.string
 }
 
 export default CustomLink;
