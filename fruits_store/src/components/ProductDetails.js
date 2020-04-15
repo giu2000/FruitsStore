@@ -1,9 +1,14 @@
 import React from 'react';
+import TitlePage from './TitlePage';
+import PropTyepes from 'prop-types';
 
 
 export default class ProductDetails extends React.Component{
+    static propTypes = {
+        product: PropTyepes.object.isRequired
+    }
+
     componentDidMount(){
-        // this.props.getProduct(this.props.productId)
         this.props.fetchProductDetails()
     }
  
@@ -11,7 +16,7 @@ export default class ProductDetails extends React.Component{
         const { product } = this.props;
         return (
             <div>
-                <h5>Product Details</h5>
+                <TitlePage title={"Product Detail"} />
                 <table>
                     <thead>
                         <tr>

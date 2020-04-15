@@ -2,9 +2,9 @@ import React from 'react';
 
 const ItemLi = ({children}) => {
     return(
-        <li>
+        <div>
             {children}
-        </li>
+        </div>
     )
 }
 

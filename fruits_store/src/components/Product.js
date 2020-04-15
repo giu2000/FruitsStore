@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Product = (props) => {
-    // const { name, price } = props.product;
     const { name, price } = props;
     return (
         <div>

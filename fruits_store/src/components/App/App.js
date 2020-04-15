@@ -13,7 +13,7 @@ const App = ({store}) => (
       <Route path="/" exact component={Home} />
       <Route path="/products_list" component={ProductsListContainer} />
       <Route path="/cart" component={CartContainer} />
-      <Route path="product_details/:id" render={({match}) => (<ProductDetailsContainer productId={match.params.id} />)} />
+      <Route path="/product_details/:id" render={({match}) => (<ProductDetailsContainer productId={match.params.id} />)} />
     </Router>
   </Provider>
 )

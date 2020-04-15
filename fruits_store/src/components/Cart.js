@@ -1,24 +1,47 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button';
+import Loading from './Loading';
+import ErrorComponent from './ErrorComponent';
+import TitlePage from './TitlePage';
 
 export default class Cart extends React.Component{
+
+    static propTypes = {
+        cart: PropTypes.object.isRequired
+    }
+
     componentDidMount(){
         this.props.fetchCartProducts()
     }
+
+    renderTable = products => {
+        return(
+            products.map((product, index) => {
+                return(
+                    <tr key={product.id + index}>
+                        <td>{product.id}</td>
+                        <td>{product.name}</td>
+                        <td><i>$ {product.price}</i></td>
+                        <td>{product.quantity}</td>
+                        <td>
+                            <Button onClick={() => this.props.addProductToCart(product)} text='+' ></Button>
+                            <Button onClick={() => this.props.removeProductFromCart(product)} text='-' ></Button>
+                        </td>
+                    </tr>
+                )
+            })
+        )
+            
+    }
     render(){
         const { cart: { isLoading, error, products, totalPrice } } = this.props;
-        if(isLoading){
-            return (
-                <div>Loading...</div>)
-        }
-        else if(error){
-            return(
-                <div>Error</div>
-            )
-        }
+
         return(
             <>
-                <h5>Cart</h5>
+                <TitlePage title={"Cart"} />
+                {isLoading && <Loading />}
+                {error && <ErrorComponent />}
                 <table>
                     <thead>
                         <tr>
@@ -29,22 +52,7 @@ export default class Cart extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            products.map(product => {
-                                return (
-                                    <tr key={product.id}>
-                                        <td>{product.id}</td>
-                                        <td>{product.name}</td>
-                                        <td><i>$ {product.price}</i></td>
-                                        <td>{product.quantity}</td>
-                                        <td>
-                                            <Button onClick={() => this.props.addProductToCart(product)} text='+' ></Button>
-                                            <Button onClick={() => this.props.removeProductFromCart(product)} text='-' ></Button>
-                                        </td>
-                                    </tr>
-                                )
-                            })
-                        }
+                        { this.renderTable(products)}
                     </tbody>
                 </table>
                 <h6>Total:</h6>
