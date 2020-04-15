@@ -1,32 +1,80 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Table = ({titles, values}) => {
-    const ths = titles => {
-        return (
-            <tr>
-                {titles.map(title => <th>{title}</th>)}
-            </tr>
-        )
+const ThsComponnet = (PassedComponent) => {
+    return class extends React.Component {
+        render() {
+            return (
+                <>
+                    <PassedComponent {...this.props}/>
+                </>
+            )
+        }
     }
-    const tds = values => {
-        return (
-            <tr>
-                <td>{values.map(value => <td>{value}</td>)}</td>
-            </tr>
-        )
+}
+
+const ThsFunction =({titles}) => {
+    return(
+        <tr>
+            {titles.map((title, index) => {
+                return(
+                    <th key={index}>
+                        {title}
+                    </th>
+                )
+            })}
+        </tr>
+    )
+}
+
+const Ths = ThsComponnet(ThsFunction);
+
+const TdsComponent = (PassedComponent) => {
+    return class extends React.Component{
+        render(){
+            return(
+                <>
+                    <PassedComponent {...this.props} />
+                </>
+            )
+        }
     }
+}
+
+const TdsFunction = ({ values }) => {
+    return (
+        <tr>
+            {values.map((value, index) => {
+                return(
+                    <td key={index}>
+                        {value}
+                    </td>
+                )
+            } )}
+        </tr>
+    )
+}
+
+
+const Tds = TdsComponent(TdsFunction)
+
+
+
+const Table = ({titles,values}) => {
+
     return(
         <table>
             <thead>
-                {ths}
+                <Ths titles={titles} />
             </thead>
             <tbody>
-                {tds}
+                <Tds values={values}/>
             </tbody>
         </table>
     )
 }
+
+
 
 Table.propTypes = {
     titles: PropTypes.array,

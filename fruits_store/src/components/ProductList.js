@@ -10,7 +10,7 @@ import TitlePage from './TitlePage';
 
 export default class ProductList extends React.Component{
     static propTypes = {
-        products: PropTypes.object.isRequired
+        productsList: PropTypes.object.isRequired
     }
 
     componentDidMount(){

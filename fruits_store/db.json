@@ -2,19 +2,19 @@
   "products": [
     {
       "id": "1",
-      "name": "orange",
+      "name": "Orange",
       "description": "orange description",
       "price": "100"
     },
     {
       "id": "2",
-      "name": "apple",
+      "name": "Apple",
       "description": "apple description",
       "price": "200"
     },
     {
       "id": "3",
-      "name": "lemon",
+      "name": "Lemon",
       "description": "lemon description",
       "price": "300"
     }
@@ -22,24 +22,24 @@
   "cart": [
     {
       "id": "3",
-      "name": "lemon",
+      "name": "Lemon",
       "description": "lemon description",
       "price": "300",
-      "quantity": 4
+      "quantity": 6
     },
     {
       "id": "1",
-      "name": "orange",
+      "name": "Orange",
       "description": "orange description",
       "price": "100",
       "quantity": 4
     },
     {
       "id": "2",
-      "name": "apple",
+      "name": "Apple",
       "description": "apple description",
       "price": "200",
-      "quantity": 1
+      "quantity": 2
     }
   ]
 }

@@ -2,16 +2,14 @@ import { connect } from "react-redux";
 import ProductDetails from '../components/ProductDetails';
 import fetchProductDetails from "../state/product-details-state/actions/fetchProductDetails";
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
     return {
         product: state.products.currentProduct,
-        // productId: ownProps.productId
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        //getProduct: productId => dispatch(getProduct(productId))
         fetchProductDetails: () => dispatch(fetchProductDetails(ownProps.productId))
     }
 }

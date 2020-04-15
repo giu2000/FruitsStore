@@ -15,25 +15,25 @@ export default class Cart extends React.Component{
         this.props.fetchCartProducts()
     }
 
-    renderTable = products => {
-        return(
-            products.map((product, index) => {
-                return(
-                    <tr key={product.id + index}>
-                        <td>{product.id}</td>
-                        <td>{product.name}</td>
-                        <td><i>$ {product.price}</i></td>
-                        <td>{product.quantity}</td>
-                        <td>
-                            <Button onClick={() => this.props.addProductToCart(product)} text='+' ></Button>
+     renderTable = products => {
+         return(
+             products.map((product, index) => {
+                 return(
+                     <tr key={product.id + index}>
+                         <td>{product.id}</td>
+                         <td>{product.name}</td>
+                         <td><i>$ {product.price}</i></td>
+                         <td>{product.quantity}</td>
+                         <td>
+                             <Button onClick={() => this.props.addProductToCart(product)} text='+' ></Button>
                             <Button onClick={() => this.props.removeProductFromCart(product)} text='-' ></Button>
                         </td>
                     </tr>
                 )
-            })
+             })
         )
             
-    }
+     }
     render(){
         const { cart: { isLoading, error, products, totalPrice } } = this.props;
 
@@ -43,18 +43,19 @@ export default class Cart extends React.Component{
                 {isLoading && <Loading />}
                 {error && <ErrorComponent />}
                 <table>
-                    <thead>
+                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Price</th>
                             <th>Quantity</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        { this.renderTable(products)}
-                    </tbody>
-                </table>
+                     </thead>
+                     <tbody>
+                         { this.renderTable(products)}
+                     </tbody>
+                 </table>
+
                 <h6>Total:</h6>
                 <div>{totalPrice}</div>
             </>

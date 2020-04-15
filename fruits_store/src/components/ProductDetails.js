@@ -1,6 +1,7 @@
 import React from 'react';
 import TitlePage from './TitlePage';
 import PropTyepes from 'prop-types';
+import Table from './Table';
 
 
 export default class ProductDetails extends React.Component{
@@ -14,28 +15,12 @@ export default class ProductDetails extends React.Component{
  
     render(){
         const { product } = this.props;
+        const titles = ['ID', 'Name', 'Description', 'Price'];
         return (
-            <div>
-                <TitlePage title={"Product Detail"} />
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{product.id}</td>
-                            <td>{product.name}</td>
-                            <td>{product.description}</td>
-                            <td><i>$ {product.price}</i></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <>
+                <TitlePage title={"Product details"} />
+                <Table titles={titles} values={Object.values(product)} />
+            </>
         )
     }
 }
