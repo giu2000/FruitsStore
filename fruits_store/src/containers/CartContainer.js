@@ -6,7 +6,8 @@ import fetchCartProducts from "../state/cart-state/actions/fetchCartProducts";
 
 const mapStateToProps = state => {
     return {
-        cart: state.cart
+        cart: state.cart,
+        counterCart: state.cart.products.reduce((total, obj) => total + obj.quantity, 0)
     }
 }
 

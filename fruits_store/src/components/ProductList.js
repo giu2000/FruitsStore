@@ -7,6 +7,8 @@ import Loading from './Loading';
 import ErrorComponent from './ErrorComponent';
 import ItemLi from './ItemLi';
 import TitlePage from './TitlePage';
+import CounterProductsCart from './CounterProductsCart';
+// import CounterCartProductsContainer from '../containers/CounterCartProductsContainer'
 
 export default class ProductList extends React.Component{
     static propTypes = {
@@ -30,7 +32,7 @@ export default class ProductList extends React.Component{
     }
 
     render(){
-        const { productsList: { isLoading, error } } = this.props;
+        const { productsList: { isLoading, error }, counterCart} = this.props;
         return(
             <>
                 <TitlePage title={"Products List"} />
@@ -42,6 +44,7 @@ export default class ProductList extends React.Component{
                 <CustomLink pathLink={`/`} text={"HOME"} />
                 <br />
                 <CustomLink pathLink={`/cart`} text={"CART"} />
+                <CounterProductsCart counter={counterCart} />
             </>
         )
     }

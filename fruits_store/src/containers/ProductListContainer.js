@@ -14,7 +14,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
     return {
-        productsList: state.products
+        productsList: state.products,
+        counterCart: state.cart.products.reduce((total, obj) => total + obj.quantity, 0)
     } 
 }
 

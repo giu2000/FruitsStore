@@ -15,3 +15,4 @@ export const REMOVE_PRODUCT_FROM_CART_ERROR = "REMOVE_PRODUCT_FROM_CART_ERROR";
 
 //update cart total price 
 export const UPDATE_CART_TOTAL_PRICE = "UPDATE_CART_TOTAL_PRICE";
+

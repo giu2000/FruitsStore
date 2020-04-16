@@ -5,6 +5,7 @@ import fetchProductDetails from "../state/product-details-state/actions/fetchPro
 const mapStateToProps = state => {
     return {
         product: state.products.currentProduct,
+
     }
 }
 

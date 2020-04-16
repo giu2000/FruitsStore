@@ -67,28 +67,35 @@
       "name": "Lemon",
       "description": "Description",
       "price": "300",
-      "quantity": 4
+      "quantity": 5
     },
     {
       "id": "1",
       "name": "Orange",
       "description": "Description",
       "price": "100",
-      "quantity": 4
+      "quantity": 6
     },
     {
       "id": "2",
       "name": "Apple",
-      "description": "apple description",
+      "description": "Description",
       "price": "200",
       "quantity": 2
+    },
+    {
+      "id": "4",
+      "name": "Cherry",
+      "description": "Description",
+      "price": "270",
+      "quantity": 4
     },
     {
       "id": "9",
       "name": "Peach",
       "description": "Description",
       "price": "70",
-      "quantity": 1
+      "quantity": 4
     },
     {
       "id": "8",

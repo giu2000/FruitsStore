@@ -5,6 +5,7 @@ import Loading from './Loading';
 import ErrorComponent from './ErrorComponent';
 import TitlePage from './TitlePage';
 import CustomLink from './CustomLink';
+import CounterProductsCart from './CounterProductsCart';
 
 export default class Cart extends React.Component{
 
@@ -36,7 +37,7 @@ export default class Cart extends React.Component{
             
      }
     render(){
-        const { cart: { isLoading, error, products, totalPrice } } = this.props;
+        const { cart: { isLoading, error, products, totalPrice }, counterCart } = this.props;
 
         return(
             <>
@@ -60,6 +61,7 @@ export default class Cart extends React.Component{
                 <CustomLink pathLink={`/`} text={"HOME"} />
                 <br />
                 <CustomLink pathLink={`/products_list`} text={"PRODUCTS LIST"} />
+                <CounterProductsCart counter={counterCart} />
             </>
         )
     }
