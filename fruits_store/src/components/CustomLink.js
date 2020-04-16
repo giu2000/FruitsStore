@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
-const CustomLink = props => {
-    const {pathLink, text} = props;
+const CustomLink = ({ pathLink, text }) => {
     return (
         <Link to={pathLink}>{text}</Link>
     )

@@ -3,34 +3,76 @@
     {
       "id": "1",
       "name": "Orange",
-      "description": "orange description",
+      "description": "Description",
       "price": "100"
     },
     {
       "id": "2",
       "name": "Apple",
-      "description": "apple description",
+      "description": "Description",
       "price": "200"
     },
     {
       "id": "3",
       "name": "Lemon",
-      "description": "lemon description",
+      "description": "Description",
       "price": "300"
+    },
+    {
+      "id": "4",
+      "name": "Cherry",
+      "description": "Description",
+      "price": "270"
+    },
+    {
+      "id": "5",
+      "name": "Pear",
+      "description": "Description",
+      "price": "140"
+    },
+    {
+      "id": "7",
+      "name": "Grapes",
+      "description": "Description",
+      "price": "120"
+    },
+    {
+      "id": "7",
+      "name": "WaterMelon",
+      "description": "Description",
+      "price": "290"
+    },
+    {
+      "id": "8",
+      "name": "Pineapple",
+      "description": "Description",
+      "price": "40"
+    },
+    {
+      "id": "9",
+      "name": "Peach",
+      "description": "Description",
+      "price": "70"
+    },
+    {
+      "id": "10",
+      "name": "Lemon",
+      "description": "Description",
+      "price": "260"
     }
   ],
   "cart": [
     {
       "id": "3",
       "name": "Lemon",
-      "description": "lemon description",
+      "description": "Description",
       "price": "300",
-      "quantity": 6
+      "quantity": 4
     },
     {
       "id": "1",
       "name": "Orange",
-      "description": "orange description",
+      "description": "Description",
       "price": "100",
       "quantity": 4
     },

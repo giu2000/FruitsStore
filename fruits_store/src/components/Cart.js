@@ -4,6 +4,7 @@ import Button from './Button';
 import Loading from './Loading';
 import ErrorComponent from './ErrorComponent';
 import TitlePage from './TitlePage';
+import CustomLink from './CustomLink';
 
 export default class Cart extends React.Component{
 
@@ -55,9 +56,10 @@ export default class Cart extends React.Component{
                          { this.renderTable(products)}
                      </tbody>
                  </table>
-
-                <h6>Total:</h6>
-                <div>{totalPrice}</div>
+                <div>Total Price: $ {totalPrice}</div>
+                <CustomLink pathLink={`/`} text={"HOME"} />
+                <br />
+                <CustomLink pathLink={`/products_list`} text={"PRODUCTS LIST"} />
             </>
         )
     }

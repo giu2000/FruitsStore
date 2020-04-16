@@ -39,6 +39,9 @@ export default class ProductList extends React.Component{
                 <ul>
                     {this.renderList()}
                 </ul>
+                <CustomLink pathLink={`/`} text={"HOME"} />
+                <br />
+                <CustomLink pathLink={`/cart`} text={"CART"} />
             </>
         )
     }
