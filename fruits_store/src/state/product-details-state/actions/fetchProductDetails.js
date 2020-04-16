@@ -28,7 +28,6 @@ const fetchProductDetailsError = error => {
     }
 }
 
-
 const fetchProductDetails = productId => dispatch => {
     dispatch(fetchProductDetailsRequest());
     fetch(`http://localhost:3001/products/${productId}`)

@@ -82,6 +82,20 @@
       "description": "apple description",
       "price": "200",
       "quantity": 2
+    },
+    {
+      "id": "9",
+      "name": "Peach",
+      "description": "Description",
+      "price": "70",
+      "quantity": 1
+    },
+    {
+      "id": "8",
+      "name": "Pineapple",
+      "description": "Description",
+      "price": "40",
+      "quantity": 1
     }
   ]
 }

@@ -58,8 +58,6 @@ const TdsFunction = ({ values }) => {
 
 const Tds = TdsComponent(TdsFunction)
 
-
-
 const Table = ({titles,values}) => {
 
     return(
@@ -73,8 +71,6 @@ const Table = ({titles,values}) => {
         </table>
     )
 }
-
-
 
 Table.propTypes = {
     titles: PropTypes.array,
