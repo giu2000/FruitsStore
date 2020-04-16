@@ -1,7 +1,7 @@
 import { 
     FETCH_CART_PRODUCTS_REQUETS, 
     FETCH_CART_PRODUCTS_SUCCESS, 
-    FETCH_PRODUCTS_ERROR, 
+    FETCH_CART_PRODUCTS_ERROR, 
     ADD_PRODUCT_TO_CART_REQUEST,
     ADD_PRODUCT_TO_CART_ERROR,
     ADD_PRODUCT_TO_CART_SUCCESS,
@@ -9,7 +9,9 @@ import {
     REMOVE_PRODUCT_FROM_CART_ERROR,
     REMOVE_PRODUCT_FROM_CART_SUCCESS,
     UPDATE_CART_TOTAL_PRICE
-} from "../actions/actionTypes"
+} from "../types/ActionTypes";
+
+
 
 const initialState = {
     isLoading: false,
@@ -33,7 +35,7 @@ const cartReducer = (state = initialState, action) => {
                 isLoading: false,
                 products: action.payload.products
             }
-        case FETCH_PRODUCTS_ERROR:
+        case FETCH_CART_PRODUCTS_ERROR:
         case ADD_PRODUCT_TO_CART_ERROR:
         case REMOVE_PRODUCT_FROM_CART_ERROR:
             return {

@@ -1,30 +1,31 @@
 import React from 'react';
+import TitlePage from './TitlePage';
+import PropTyepes from 'prop-types';
+import Table from './Table';
+import CustomLink from './CustomLink';
 
-const ProductDetails = props => {
-    const { product } = props;
-    return (
-        <div>
-            <h5>Product Details</h5>
-            <table>
-                <thead>
-                    <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{product.id}</td>
-                        <td>{product.name}</td>
-                        <td>{product.description}</td>
-                        <td><i>$ {product.price}</i></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    )
+export default class ProductDetails extends React.Component{
+    static propTypes = {
+        product: PropTyepes.object.isRequired
+    }
+
+    componentDidMount(){
+        this.props.fetchProductDetails()
+    }
+ 
+    render(){
+        const { product } = this.props;
+        const titles = ['ID', 'Name', 'Description', 'Price'];
+        return (
+            <>
+                <TitlePage title={"Product Details"} />
+                <Table titles={titles} values={Object.values(product)} />
+                <CustomLink pathLink={'/'} text={"HOME"} />
+                <br />
+                <CustomLink pathLink={'/products_list'} text={"PRODUCTS LIST"} />
+                <br />
+                <CustomLink pathLink={'/cart'} text={"CART"} />
+            </>
+        )
+    }
 }
-
-export default ProductDetails;
