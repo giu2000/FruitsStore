@@ -3,8 +3,10 @@ import {
     REMOVE_PRODUCT_FROM_CART_SUCCESS, 
     REMOVE_PRODUCT_FROM_CART_ERROR 
 } from "../types/ActionTypes";
-
+import getCartProductIndex from '../../../utils/getCartProductIndex';
 import fetchCartProducts from './fetchCartProducts';
+import { baseUrlCart } from "../../../utils/url";
+
 
 const removeProductFromCartRequest = () => {
     return {
@@ -27,14 +29,10 @@ const removeProductFromCartError = error => {
     }
 }
 
-const getCartProductIndex = (cart, id) => cart.findIndex(prdct => prdct.id === id);
-
-const baseUrl = 'http://127.0.0.1:3001/cart';
-
 const removeProductFromCart = product => (dispatch, getState) => {
     const { cart: { products } } = getState();
     const index = getCartProductIndex( products, product.id);
-    const endpoint = `${baseUrl}/${product.id}`;
+    const endpoint = `${baseUrlCart}/${product.id}`;
     const method = products[index].quantity > 1 ? 'PUT' : 'DELETE';
     let  qty;
 
@@ -64,7 +62,7 @@ const removeProductFromCart = product => (dispatch, getState) => {
     .then(response => response.json())
     .then(product => {
         dispatch(removeProductFromCartSuccess());
-        dispatch(fetchCartProducts(baseUrl));
+        dispatch(fetchCartProducts(baseUrlCart));
         } 
     )
     .catch(error => dispatch(removeProductFromCartError(error)));

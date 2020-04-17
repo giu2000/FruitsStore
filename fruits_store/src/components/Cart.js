@@ -5,6 +5,7 @@ import Loading from './Loading';
 import ErrorComponent from './ErrorComponent';
 import TitlePage from './TitlePage';
 import CustomLink from './CustomLink';
+import CartProductsCounter from './CartProductsCounter';
 
 export default class Cart extends React.Component{
 
@@ -14,6 +15,7 @@ export default class Cart extends React.Component{
 
     componentDidMount(){
         this.props.fetchCartProducts()
+        this.props.updateCartProductsCounter();
     }
 
      renderTable = products => {
@@ -26,7 +28,7 @@ export default class Cart extends React.Component{
                          <td><i>$ {product.price}</i></td>
                          <td>{product.quantity}</td>
                          <td>
-                             <Button onClick={() => this.props.addProductToCart(product)} text='+' ></Button>
+                            <Button onClick={() => this.props.addProductToCart(product)} text='+' ></Button>
                             <Button onClick={() => this.props.removeProductFromCart(product)} text='-' ></Button>
                         </td>
                     </tr>
@@ -36,7 +38,7 @@ export default class Cart extends React.Component{
             
      }
     render(){
-        const { cart: { isLoading, error, products, totalPrice } } = this.props;
+        const { cart: { isLoading, error, products, totalPrice, counter } } = this.props;
 
         return(
             <>
@@ -57,9 +59,11 @@ export default class Cart extends React.Component{
                      </tbody>
                  </table>
                 <div>Total Price: $ {totalPrice}</div>
+                <CartProductsCounter counter={counter} />
                 <CustomLink pathLink={`/`} text={"HOME"} />
                 <br />
                 <CustomLink pathLink={`/products_list`} text={"PRODUCTS LIST"} />
+
             </>
         )
     }
