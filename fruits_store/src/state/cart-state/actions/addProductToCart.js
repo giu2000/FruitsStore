@@ -1,10 +1,11 @@
 import { 
     ADD_PRODUCT_TO_CART_REQUEST, 
     ADD_PRODUCT_TO_CART_SUCCESS, 
-    ADD_PRODUCT_TO_CART_ERROR 
+    ADD_PRODUCT_TO_CART_ERROR ,
 } from "../types/ActionTypes";
-
 import fetchCartProducts from './fetchCartProducts';
+import getCartProductIndex from '../../../utils/getCartProductIndex';
+import { baseUrlCart } from "../../../utils/url";
 
 const addProductToCartRequest = () => {
     return {
@@ -27,29 +28,21 @@ const addProductToCartError = error => {
     }
 }
 
-const getCartProductIndex = (cart, id) => cart.findIndex(prdct => prdct.id === id); 
-
-const baseUrl = 'http://127.0.0.1:3001/cart';
-
 const addProductToCart = product => (dispatch, getState) => {
     const { cart } = getState();
     const index = getCartProductIndex(cart.products, product.id);
-    
     let endpoint, method, qty;
-
     dispatch(addProductToCartRequest());
-
     if(index > -1){
-        endpoint = `${baseUrl}/${product.id}`;
+        endpoint = `${baseUrlCart}/${product.id}`;
         method = 'PUT';
         qty = cart.products[index].quantity
     }
     else {
-        endpoint = baseUrl;
+        endpoint = baseUrlCart;
         method = 'POST';
         qty = 0;
     }
-
     fetch(endpoint, {
         method,
         headers: {
@@ -64,7 +57,7 @@ const addProductToCart = product => (dispatch, getState) => {
     })
     .then(response => {
         dispatch(addProductToCartSuccess());
-        dispatch(fetchCartProducts(baseUrl));
+        dispatch(fetchCartProducts(baseUrlCart));
         }
     )
     .catch(error => dispatch(addProductToCartError))

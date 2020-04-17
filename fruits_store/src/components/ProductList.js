@@ -7,8 +7,8 @@ import Loading from './Loading';
 import ErrorComponent from './ErrorComponent';
 import ItemLi from './ItemLi';
 import TitlePage from './TitlePage';
-import CounterProductsCart from './CounterProductsCart';
-// import CounterCartProductsContainer from '../containers/CounterCartProductsContainer'
+import CartProductsCounter from './CartProductsCounter';
+
 
 export default class ProductList extends React.Component{
     static propTypes = {
@@ -17,6 +17,7 @@ export default class ProductList extends React.Component{
 
     componentDidMount(){
         this.props.fetchProducts();
+        this.props.updateCartProductsCounter();
     }
     renderList(){
         const { productsList: { products } } = this.props;
@@ -32,7 +33,7 @@ export default class ProductList extends React.Component{
     }
 
     render(){
-        const { productsList: { isLoading, error }, counterCart} = this.props;
+        const { productsList: { isLoading, error }, cartCounter} = this.props;
         return(
             <>
                 <TitlePage title={"Products List"} />
@@ -44,7 +45,7 @@ export default class ProductList extends React.Component{
                 <CustomLink pathLink={`/`} text={"HOME"} />
                 <br />
                 <CustomLink pathLink={`/cart`} text={"CART"} />
-                <CounterProductsCart counter={counterCart} />
+                <CartProductsCounter counter={cartCounter} />
             </>
         )
     }

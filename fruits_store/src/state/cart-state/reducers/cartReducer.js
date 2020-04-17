@@ -9,6 +9,7 @@ import {
     REMOVE_PRODUCT_FROM_CART_ERROR,
     REMOVE_PRODUCT_FROM_CART_SUCCESS,
     UPDATE_CART_TOTAL_PRICE,
+    UPDATE_CART_PRODUCTS_COUNTER,
 } from "../types/ActionTypes";
 
 
@@ -17,7 +18,8 @@ const initialState = {
     isLoading: false,
     error: "",
     products: [],
-    totalPrice: 0
+    totalPrice: 0,
+    counter: 0
 }
 
 const cartReducer = (state = initialState, action) => {
@@ -56,6 +58,11 @@ const cartReducer = (state = initialState, action) => {
                 isLoading: false,
                 error: "",
                 totalPrice: action.payload.totalPrice
+            }
+        case UPDATE_CART_PRODUCTS_COUNTER:
+            return{
+                ...state,
+                counter: action.payload.counter
             }
         default:
             return state
