@@ -63,32 +63,32 @@
   ],
   "cart": [
     {
-      "id": "3",
-      "name": "Lemon",
-      "description": "Description",
-      "price": "300",
-      "quantity": 1
-    },
-    {
       "id": "1",
       "name": "Orange",
       "description": "Description",
       "price": "100",
-      "quantity": 8
+      "quantity": 4
     },
     {
       "id": "2",
       "name": "Apple",
       "description": "Description",
       "price": "200",
-      "quantity": 1
+      "quantity": 2
     },
     {
       "id": "4",
       "name": "Cherry",
       "description": "Description",
       "price": "270",
-      "quantity": 5
+      "quantity": 4
+    },
+    {
+      "id": "3",
+      "name": "Lemon",
+      "description": "Description",
+      "price": "300",
+      "quantity": 2
     }
   ]
 }
