@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Product = (props) => {
-    const { name, price } = props;
+const Product = ({name, price}) => {
     return (
         <div>
             <b>{name}</b> | <i>$ {price}</i>

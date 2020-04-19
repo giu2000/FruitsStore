@@ -1,8 +1,9 @@
 import React from 'react';
+import { ERROR } from '../utils/labels';
 
 const ErrorComponent = () => {
     return (
-        <div>Error</div>
+        <div>{ERROR}</div>
     )
 }
 

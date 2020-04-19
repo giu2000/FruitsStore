@@ -8,6 +8,12 @@ import ErrorComponent from './ErrorComponent';
 import ItemLi from './ItemLi';
 import TitlePage from './TitlePage';
 import CartProductsCounter from './CartProductsCounter';
+import { product_details, home, cart } from '../utils/link';
+import {    
+    PRODUCTS_LIST_PAGE_NAME, ADD_TO_CART, 
+    HOME_LINK_PLACEHOLDER, CART_LINK_PLACEHOLDER, 
+    PRODUCT_DETAILS_LINK_PLACEHOLDER 
+} from '../utils/labels';
 
 
 export default class ProductList extends React.Component{
@@ -25,8 +31,8 @@ export default class ProductList extends React.Component{
             return(
                 <ItemLi key={product.id+index}>
                     <Product product={product} name={product.name} price={product.price} />
-                    <CustomLink pathLink={`/product_details/${product.id}`} text={"Details"} />
-                    <Button onClick={() => this.props.addProductToCart(product)} product={product} text="Add to Cart" />
+                    <CustomLink pathLink={`${product_details}/${product.id}`} text={PRODUCT_DETAILS_LINK_PLACEHOLDER} />
+                    <Button onClick={() => this.props.addProductToCart(product)} product={product} text={ADD_TO_CART} />
                 </ItemLi>
             )
         })
@@ -36,15 +42,15 @@ export default class ProductList extends React.Component{
         const { productsList: { isLoading, error }, cartCounter} = this.props;
         return(
             <>
-                <TitlePage title={"Products List"} />
+                <TitlePage title={PRODUCTS_LIST_PAGE_NAME} />
                 {isLoading && <Loading />}
                 {error && <ErrorComponent />}
                 <ul>
                     {this.renderList()}
                 </ul>
-                <CustomLink pathLink={`/`} text={"HOME"} />
+                <CustomLink pathLink={home} text={HOME_LINK_PLACEHOLDER} />
                 <br />
-                <CustomLink pathLink={`/cart`} text={"CART"} />
+                <CustomLink pathLink={cart} text={CART_LINK_PLACEHOLDER} />
                 <CartProductsCounter counter={cartCounter} />
             </>
         )
