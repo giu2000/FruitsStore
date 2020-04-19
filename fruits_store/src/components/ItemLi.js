@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ItemLi = ({children}) => {
     return(
@@ -6,6 +7,10 @@ const ItemLi = ({children}) => {
             {children}
         </div>
     )
+}
+
+ItemLi.propTypes = {
+    children: PropTypes.node
 }
 
 export default ItemLi;
