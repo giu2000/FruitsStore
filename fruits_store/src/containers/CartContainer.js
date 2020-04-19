@@ -4,6 +4,7 @@ import removeProductFromCart from "../state/cart-state/actions/removeProductFrom
 import addProductToCart from "../state/cart-state/actions/addProductToCart";
 import fetchCartProducts from "../state/cart-state/actions/fetchCartProducts";
 import updateCartProductsCounter from '../state/cart-state/actions/updateCartProductsCounter';
+import removeAllProductsFromCart from '../state/cart-state/actions/removeAllProductsFromCart';
 import { baseUrlCart } from "../utils/url";
 
 const mapStateToProps = state => {
@@ -12,12 +13,13 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         fetchCartProducts: () => dispatch(fetchCartProducts(baseUrlCart)),
         addProductToCart: product => dispatch(addProductToCart(product)),
         removeProductFromCart: product => dispatch(removeProductFromCart(product)),
-        updateCartProductsCounter: () => dispatch(updateCartProductsCounter(baseUrlCart))
+        updateCartProductsCounter: () => dispatch(updateCartProductsCounter(baseUrlCart)),
+        removeAllProductsFromCart: (products) => dispatch(removeAllProductsFromCart(products))
     }
 }
 

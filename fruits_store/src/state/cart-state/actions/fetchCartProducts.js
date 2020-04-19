@@ -37,11 +37,14 @@ const fetchCartProducts = url => dispatch => {
     fetch(url)
         .then(response => response.json())
         .then(products => {
-            dispatch(fetchCartProductsSuccess(products))
+            dispatch(fetchCartProductsSuccess(products));
             dispatch(updateCartTotalPrice(getTotalPrice(products)))
             dispatch(cartProductsCounter(getCounter(products)));
         })
-        .catch(error => dispatch(fetchCartProductsError(error)))
+        .catch(error => { 
+            console.log('error');
+            dispatch(fetchCartProductsError(error))
+        })
 }
 
 export default fetchCartProducts;
