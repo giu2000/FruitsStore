@@ -23,8 +23,6 @@ export default class ProductList extends React.Component{
         productsList: PropTypes.object.isRequired
     }
     submit = (values, product) => {
-        console.log(values);
-        console.log(product)
         this.props.addProductToCart(product, values)
 
     }
@@ -41,7 +39,7 @@ export default class ProductList extends React.Component{
                     <Product product={product} name={product.name} price={product.price} />
                     <FormComponent onSubmit={values => this.submit(values, product)} />
                     <CustomLink pathLink={`${product_details}/${product.id}`} text={PRODUCT_DETAILS_LINK_PLACEHOLDER} />
-                    <Button onClick={() => this.props.addProductToCart(product,1)} product={product} text={ADD_TO_CART} />
+                    <Button onClick={() => this.props.addProductToCart(product)} product={product} text={ADD_TO_CART} />
                 </ItemLi>
             )
         })

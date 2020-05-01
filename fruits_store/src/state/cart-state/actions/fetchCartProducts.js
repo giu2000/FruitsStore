@@ -7,6 +7,7 @@ import updateCartTotalPrice from './updateCartTotalPrice';
 import {cartProductsCounter} from './updateCartProductsCounter';
 import getTotalPrice from '../../../utils/getTotalPrice';
 import getCounter from '../../../utils/getCounter';
+import { baseUrlCart } from "../../../utils/url";
 
 const fetchCartProductsRequest = () => {
     return {
@@ -32,19 +33,21 @@ const fetchCartProductsError = error => {
     }
 }
 
-const fetchCartProducts = url => dispatch => {
+const fetchCartProducts = () => dispatch => {
     dispatch(fetchCartProductsRequest());
-    fetch(url)
+    fetch(baseUrlCart)
         .then(response => response.json())
         .then(products => {
             dispatch(fetchCartProductsSuccess(products));
             dispatch(updateCartTotalPrice(getTotalPrice(products)))
             dispatch(cartProductsCounter(getCounter(products)));
+
         })
         .catch(error => { 
             console.log('error');
             dispatch(fetchCartProductsError(error))
         })
+    
 }
 
 export default fetchCartProducts;
