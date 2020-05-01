@@ -101,7 +101,7 @@ export default class Cart extends React.Component{
                                 { this.renderTable(products)}
                             </tbody>
                         </table>
-                        <div>`${TOTAL_PRICE}: $ ${totalPrice}`</div>
+                        <div>{`${TOTAL_PRICE}: $ ${totalPrice}`}</div>
                         <CartProductsCounter counter={counter} />
                         <Button onClick={() => this.props.removeAllProductsFromCart(products)} text={DELETE_ALL}/>
                         <br />
