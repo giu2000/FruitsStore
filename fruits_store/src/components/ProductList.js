@@ -8,6 +8,7 @@ import ErrorComponent from './ErrorComponent';
 import ItemLi from './ItemLi';
 import TitlePage from './TitlePage';
 import CartProductsCounter from './CartProductsCounter';
+import FormComponent from './FormComponent';
 import { product_details, home, cart } from '../utils/link';
 import {    
     PRODUCTS_LIST_PAGE_NAME, ADD_TO_CART, 
@@ -16,21 +17,26 @@ import {
 } from '../utils/labels';
 
 
+
 export default class ProductList extends React.Component{
     static propTypes = {
         productsList: PropTypes.object.isRequired
     }
-
-    componentDidMount(){
+    submit = (values, product) => {
+        this.props.addProductToCart(product, values);
+    }
+    componentDidMount() {
         this.props.fetchProducts();
         this.props.updateCartProductsCounter();
     }
+
     renderList(){
         const { productsList: { products } } = this.props;
         return products.map((product, index) => {
             return(
                 <ItemLi key={product.id+index}>
                     <Product product={product} name={product.name} price={product.price} />
+                    <FormComponent onSubmit={values => this.submit(values, product)} name={product.name}/>
                     <CustomLink pathLink={`${product_details}/${product.id}`} text={PRODUCT_DETAILS_LINK_PLACEHOLDER} />
                     <Button onClick={() => this.props.addProductToCart(product)} product={product} text={ADD_TO_CART} />
                 </ItemLi>

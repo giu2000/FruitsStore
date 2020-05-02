@@ -63,39 +63,18 @@
   ],
   "cart": [
     {
-      "id": "3",
+      "id": "10",
       "name": "Lemon",
       "description": "Description",
-      "price": "300",
-      "quantity": 1
-    },
-    {
-      "id": "2",
-      "name": "Apple",
-      "description": "Description",
-      "price": "200",
-      "quantity": 1
+      "price": "260",
+      "quantity": 11
     },
     {
       "id": "9",
       "name": "Peach",
       "description": "Description",
       "price": "70",
-      "quantity": 1
-    },
-    {
-      "id": "8",
-      "name": "Pineapple",
-      "description": "Description",
-      "price": "40",
-      "quantity": 1
-    },
-    {
-      "id": "10",
-      "name": "Lemon",
-      "description": "Description",
-      "price": "260",
-      "quantity": 1
+      "quantity": 4
     }
   ]
 }

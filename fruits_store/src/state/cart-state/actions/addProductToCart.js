@@ -18,7 +18,6 @@ const addProductToCartSuccess = () => {
         type: ADD_PRODUCT_TO_CART_SUCCESS
     }
 }
-
 const addProductToCartError = error => {
     return {
         type: ADD_PRODUCT_TO_CART_ERROR,
@@ -28,39 +27,39 @@ const addProductToCartError = error => {
     }
 }
 
-const addProductToCart = product => (dispatch, getState) => {
-    const { cart } = getState();
-    const index = getCartProductIndex(cart.products, product.id);
-    let endpoint, method, qty;
+const addProductToCart = (product, quantityChoosen) => (dispatch, getState) => {
+    const { cart: { products } } = getState();
+    const index = getCartProductIndex(products, product.id);
+    let endpoint, method, qty, qtyToAdd;
     dispatch(addProductToCartRequest());
     if(index > -1){
         endpoint = `${baseUrlCart}/${product.id}`;
         method = 'PUT';
-        qty = cart.products[index].quantity
+        qty = products[index].quantity;
     }
     else {
         endpoint = baseUrlCart;
         method = 'POST';
         qty = 0;
     }
+    qtyToAdd = quantityChoosen ? parseInt(quantityChoosen[product.name]) : 1
     fetch(endpoint, {
         method,
         headers: {
-            'Content-type': 'application/json',
-            'Accept': 'application/json'
+            'Content-type': "application/json",
+            'Accept': "application/json"
         },
         body: JSON.stringify({
             ...product,
-            quantity: qty+1
+            quantity: qty + qtyToAdd
         })
-        
     })
     .then(response => {
         dispatch(addProductToCartSuccess());
-        dispatch(fetchCartProducts(baseUrlCart));
-        }
-    )
-    .catch(error => dispatch(addProductToCartError))
+
+    })
+    .catch(error => dispatch(addProductToCartError(error)))
+    dispatch(fetchCartProducts(baseUrlCart))
 }
 
 export default addProductToCart;

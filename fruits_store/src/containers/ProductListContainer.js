@@ -4,14 +4,16 @@ import fetchProducts from '../state/products-state/actions/fetchProducts';
 import fetchProductDetails from '../state/product-details-state/actions/fetchProductDetails';
 import addProductToCart from "../state/cart-state/actions/addProductToCart";
 import updateCartProductsCounter from "../state/cart-state/actions/updateCartProductsCounter";
-import { baseUrlCart, baseUrlProducts } from '../utils/url';
+import { baseUrlProducts } from '../utils/url';
+
 
 const mapDispatchToProps = dispatch => {
     return {
         fetchProducts: () =>  dispatch(fetchProducts(baseUrlProducts)),
         fetchProductDetails: productId => dispatch(fetchProductDetails(productId)),
-        addProductToCart: product => dispatch(addProductToCart(product)),
-        updateCartProductsCounter: () => dispatch(updateCartProductsCounter(baseUrlCart))
+        addProductToCart: (product, quantityChoosen) => dispatch(addProductToCart(product, quantityChoosen)),
+        updateCartProductsCounter: () => dispatch(updateCartProductsCounter()),
+
     }
 } 
 
