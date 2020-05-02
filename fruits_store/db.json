@@ -61,5 +61,20 @@
       "price": "260"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "10",
+      "name": "Lemon",
+      "description": "Description",
+      "price": "260",
+      "quantity": 11
+    },
+    {
+      "id": "9",
+      "name": "Peach",
+      "description": "Description",
+      "price": "70",
+      "quantity": 4
+    }
+  ]
 }

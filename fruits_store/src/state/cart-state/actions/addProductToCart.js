@@ -42,7 +42,7 @@ const addProductToCart = (product, quantityChoosen) => (dispatch, getState) => {
         method = 'POST';
         qty = 0;
     }
-    qtyToAdd = quantityChoosen ? parseInt(quantityChoosen.numberProducts) : 1
+    qtyToAdd = quantityChoosen ? parseInt(quantityChoosen[product.name]) : 1
     fetch(endpoint, {
         method,
         headers: {
