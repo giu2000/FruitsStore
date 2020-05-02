@@ -26,6 +26,7 @@ import {
     home, 
     products_list 
 } from '../utils/link';
+import Navbar, { homeConfig, productListConfig} from './Navbar';
 
 //Component Empty Cart
 const EmptyCart = ({pathLink, text}) => {
@@ -81,13 +82,15 @@ export default class Cart extends React.Component{
     render(){
         const { cart: { isLoading, error, products, totalPrice, counter } } = this.props;
         return(
-            <>
+            <div>
                 <TitlePage title={CART_PAGE_NAME} />
+                <Navbar firstConfig={homeConfig} secondConfig={productListConfig}/>
                 {isLoading && <Loading />}
                 {error && <ErrorComponent />}
+                
                 {products.length === 0 ? 
                     <EmptyCart pathLink={products_list} text={BACK_TO_PRODUCTS_LIST_LINK} />
-                    : <>
+                    : <div>
                         <table>
                             <thead>
                             <tr>
@@ -105,16 +108,10 @@ export default class Cart extends React.Component{
                         <CartProductsCounter counter={counter} />
                         <Button onClick={() => this.props.removeAllProductsFromCart(products)} text={DELETE_ALL}/>
                         <br />
-                        <CustomLink pathLink={home} text={HOME_PAGE_NAME} />
-                        <br />
-                        <CustomLink pathLink={products_list} text={PRODUCTS_LIST_PAGE_NAME} /> 
-                    
-                    </>
-                } 
-                
-                
+                    </div>
+
                 }
-            </>
+            </div>
         )
     }
 }
