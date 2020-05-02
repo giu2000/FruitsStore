@@ -12,9 +12,9 @@ import FormComponent from './FormComponent';
 import { product_details, home, cart } from '../utils/link';
 import {    
     PRODUCTS_LIST_PAGE_NAME, ADD_TO_CART, 
-    HOME_LINK_PLACEHOLDER, CART_LINK_PLACEHOLDER, 
     PRODUCT_DETAILS_LINK_PLACEHOLDER 
 } from '../utils/labels';
+import Navbar, { homeConfig, cartConfig } from './Navbar';
 
 
 
@@ -47,16 +47,16 @@ export default class ProductList extends React.Component{
     render(){
         const { productsList: { isLoading, error }, cartCounter} = this.props;
         return(
-            <>
+            <>  
+                
                 <TitlePage title={PRODUCTS_LIST_PAGE_NAME} />
+                <Navbar firstConfig={homeConfig} secondConfig={cartConfig} />
                 {isLoading && <Loading />}
                 {error && <ErrorComponent />}
+                
                 <ul>
                     {this.renderList()}
                 </ul>
-                <CustomLink pathLink={home} text={HOME_LINK_PLACEHOLDER} />
-                <br />
-                <CustomLink pathLink={cart} text={CART_LINK_PLACEHOLDER} />
                 <CartProductsCounter counter={cartCounter} />
             </>
         )
