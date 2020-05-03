@@ -28,15 +28,16 @@ export const productListConfig = {
 
 let Navbar = ({firstConfig, secondConfig}) => {
             return (
-                <div className='row' style={{ outline: '1px solid black' }}>
-                    <div className='two columns'>Logo</div>
-                    <div className='two columns'>
-                        <CustomLink pathLink={firstConfig.pathLink} text={firstConfig.text} />
+                <div className='container'>
+                    <div className='row' style={{ outline: '1px solid black' }}>
+                        <div className='two columns'>Logo</div>
+                        <div className='two columns'>
+                            <CustomLink pathLink={firstConfig.pathLink} text={firstConfig.text} />
+                        </div>
+                        <div className='seven columns'>
+                            <CustomLink pathLink={secondConfig.pathLink} text={secondConfig.text} />
+                        </div>
                     </div>
-                    <div className='seven columns'>
-                        <CustomLink pathLink={secondConfig.pathLink} text={secondConfig.text} />
-                    </div>
-
                 </div>
             )
 

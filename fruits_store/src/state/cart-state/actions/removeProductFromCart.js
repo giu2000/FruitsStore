@@ -35,6 +35,7 @@ const removeProductFromCart = product => (dispatch, getState) => {
     const endpoint = `${baseUrlCart}/${product.id}`;
     const method = products[index].quantity > 1 ? 'PUT' : 'DELETE';
     let  qty;
+    let prdctTotalPrc;
 
     dispatch(removeProductFromCartRequest());
 
@@ -44,6 +45,7 @@ const removeProductFromCart = product => (dispatch, getState) => {
 
     if(products[index].quantity > 1){
         qty = products[index].quantity
+        prdctTotalPrc = products[index].productTotalPrice
     }
 
     fetch(endpoint, {
@@ -55,7 +57,8 @@ const removeProductFromCart = product => (dispatch, getState) => {
         body: JSON.stringify(
             {
                 ...product,
-                quantity: qty - 1
+                quantity: qty - 1,
+                productTotalPrice: prdctTotalPrc - product.price
             }
         )
     })
