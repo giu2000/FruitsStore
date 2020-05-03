@@ -1,24 +1,18 @@
 import React from 'react';
-import TitlePage from './TitlePage';
 import PropTyepes from 'prop-types';
-import Table from './Table';
-import CustomLink from './CustomLink';
+import FormComponent from './FormComponent';
+
+import Navbar, {
+    homeConfig,
+    cartConfig,
+    productListConfig,
+} from './Navbar';
+
 import { 
-    home, 
-    products_list, 
-    cart 
-} from '../utils/link';
-import { 
-    HOME_PAGE_NAME, 
-    PRODUCTS_LIST_PAGE_NAME, 
-    CART_PAGE_NAME, 
     PRODUCT_ID,
     PRODUCT_NAME,
     PRODUCT_DESCRIPTION,
     PRODUCT_PRICE,
-    HOME_LINK_PLACEHOLDER,
-    PRODUCTS_LIST_LINK_PLACEHOLDER,
-    CART_LINK_PLACEHOLDER
 } from '../utils/labels';
 
 export default class ProductDetails extends React.Component{
@@ -29,20 +23,49 @@ export default class ProductDetails extends React.Component{
     componentDidMount(){
         this.props.fetchProductDetails()
     }
+    submit = (values, product) => {
+        this.props.addProductToCart(product, values);
+    }
  
     render(){
         const { product } = this.props;
         const titles = [PRODUCT_ID, PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE];
         return (
             <>
-                <TitlePage title={"Product Details"} />
-                <Table titles={titles} values={Object.values(product)} />
-                <CustomLink pathLink={home} text={HOME_LINK_PLACEHOLDER} />
-                <br />
-                <CustomLink pathLink={products_list} text={PRODUCTS_LIST_LINK_PLACEHOLDER} />
-                <br />
-                <CustomLink pathLink={cart} text={CART_LINK_PLACEHOLDER} />
+                
+                <div className='container'>
+                    <div className="row">
+                        <Navbar firstConfig={homeConfig} secondConfig={cartConfig} thirdConfig={productListConfig} />
+  
+                    </div>
+                    <div className="row">
+                        <div className="four columns" style={{margin: "5%", outline: "1px solid black"}}>
+                            <img src={require('./orange.jpg')} style={{ width: "50%"}} />
+                        </div>
+                        <div className="six columns" style={{outline: "1px solid black"}}>
+                            <div>
+                                <b>{product.name}</b>
+                            </div>
+                            <div>
+                                Details TBD
+                            </div>
+                            <div>
+                                ${product.price}
+                            </div>
+                            <div>
+                                <FormComponent onSubmit={values => this.submit(values, product)}
+                                    name={product.name}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
             </>
         )
     }
 }
+
+
+// <Table titles={titles} values={Object.values(product)} />

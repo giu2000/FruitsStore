@@ -49,9 +49,7 @@ EmptyCart.propTypes = {
     text: PropTypes.string
 }
 
-const notEmptycart = () => {
 
-}
 
 export default class Cart extends React.Component{
 
@@ -103,6 +101,7 @@ export default class Cart extends React.Component{
                             <table className='eight columns' style={{outline:'1px solid green'}}>
                                 <thead>
                                     <tr>
+        
                                         <th>{PRODUCT_NAME}</th>
                                         <th>{PRODUCT_QUANTITY}</th>
                                         <th>{PRODUCT_PRICE}</th>

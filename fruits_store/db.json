@@ -76,8 +76,8 @@
       "name": "Lemon",
       "description": "Description",
       "price": "300",
-      "quantity": 3,
-      "productTotalPrice": 900
+      "quantity": 11,
+      "productTotalPrice": 3300
     },
     {
       "id": "4",
