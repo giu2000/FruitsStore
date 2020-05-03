@@ -15,8 +15,6 @@ import {
     REMOVE_ALL_PRODUCTS_FROM_CART_ERROR,
 } from "../types/ActionTypes";
 
-
-
 const initialState = {
     isLoading: false,
     error: "",

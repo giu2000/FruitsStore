@@ -28,7 +28,7 @@ export const productListConfig = {
 
 let Navbar = ({firstConfig, secondConfig}) => {
             return (
-                <div className='container'>
+                <div className='telwe columns'>
                     <div className='row' style={{ outline: '1px solid black' }}>
                         <div className='two columns'>Logo</div>
                         <div className='two columns'>
