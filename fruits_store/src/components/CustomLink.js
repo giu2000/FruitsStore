@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
-const CustomLink = ({ pathLink, text }) => {
+const CustomLink = ({ pathLink, text, style}) => {
     return (
-        <Link to={pathLink}>{text}</Link>
+        <NavLink to={pathLink} style={style}>{text} </NavLink>
     )
 }
 

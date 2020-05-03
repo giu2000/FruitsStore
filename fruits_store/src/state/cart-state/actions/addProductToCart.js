@@ -30,17 +30,19 @@ const addProductToCartError = error => {
 const addProductToCart = (product, quantityChoosen) => (dispatch, getState) => {
     const { cart: { products } } = getState();
     const index = getCartProductIndex(products, product.id);
-    let endpoint, method, qty, qtyToAdd;
+    let endpoint, method, qty, qtyToAdd, prdctTotalPrc;
     dispatch(addProductToCartRequest());
     if(index > -1){
         endpoint = `${baseUrlCart}/${product.id}`;
         method = 'PUT';
         qty = products[index].quantity;
+        prdctTotalPrc = products[index].productTotalPrice
     }
     else {
         endpoint = baseUrlCart;
         method = 'POST';
         qty = 0;
+        prdctTotalPrc = 0
     }
     qtyToAdd = quantityChoosen ? parseInt(quantityChoosen[product.name]) : 1
     fetch(endpoint, {
@@ -51,10 +53,12 @@ const addProductToCart = (product, quantityChoosen) => (dispatch, getState) => {
         },
         body: JSON.stringify({
             ...product,
-            quantity: qty + qtyToAdd
+            quantity: qty + qtyToAdd,
+            productTotalPrice: prdctTotalPrc + qtyToAdd * product.price
         })
     })
     .then(response => {
+        console.log('productTotalPrice', product.productTotalPrice)
         dispatch(addProductToCartSuccess());
 
     })
