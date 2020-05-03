@@ -21,7 +21,6 @@ export default class ProductList extends React.Component{
         productsList: PropTypes.object.isRequired
     }
     submit = (values, product) => {
-        console.log('input', values)
         this.props.addProductToCart(product, values);
     }
     componentDidMount() {

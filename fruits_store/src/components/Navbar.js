@@ -26,7 +26,7 @@ export const productListConfig = {
     text: PRODUCTS_LIST_LINK_PLACEHOLDER
 }
 
-let Navbar = ({firstConfig, secondConfig}) => {
+let Navbar = ({firstConfig, secondConfig, thirdConfig}) => {
             return (
                 <div className='telwe columns'>
                     <div className='row' style={{ outline: '1px solid black' }}>
@@ -34,7 +34,10 @@ let Navbar = ({firstConfig, secondConfig}) => {
                         <div className='two columns'>
                             <CustomLink pathLink={firstConfig.pathLink} text={firstConfig.text} />
                         </div>
-                        <div className='seven columns'>
+                        <div className="two columns">
+                            {thirdConfig && <CustomLink pathLink={thirdConfig.pathLink} text={thirdConfig.text} />}
+                        </div>
+                        <div className='five columns'>
                             <CustomLink pathLink={secondConfig.pathLink} text={secondConfig.text} />
                         </div>
                     </div>
