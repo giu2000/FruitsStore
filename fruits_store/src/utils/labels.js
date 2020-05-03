@@ -7,7 +7,7 @@ export const PRODUCT_PRICE = "Price";
 export const PRODUCT_QUANTITY = "Quantity";
 export const PRODUCT_DESCRIPTION = "Description";
 export const TOTAL_PRICE = "Total Price";
-export const PRODUCTS_NUMBER = "Products Number"
+export const PRODUCTS_NUMBER = "Products Cart"
 //Cart Link 
 export const BACK_TO_PRODUCTS_LIST_LINK = "Back to Product list";
 export const HOME_LINK_PLACEHOLDER = "Home";

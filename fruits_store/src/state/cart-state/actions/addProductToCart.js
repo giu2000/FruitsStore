@@ -44,7 +44,7 @@ const addProductToCart = (product, quantityChoosen) => (dispatch, getState) => {
         qty = 0;
         prdctTotalPrc = 0
     }
-    qtyToAdd = quantityChoosen ? parseInt(quantityChoosen[product.name]) : 1
+    qtyToAdd = quantityChoosen ? quantityChoosen[product.name] : 1
     fetch(endpoint, {
         method,
         headers: {
@@ -58,7 +58,7 @@ const addProductToCart = (product, quantityChoosen) => (dispatch, getState) => {
         })
     })
     .then(response => {
-        console.log('productTotalPrice', product.productTotalPrice)
+
         dispatch(addProductToCartSuccess());
 
     })

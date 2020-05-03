@@ -6,12 +6,10 @@ import CustomLink from './CustomLink';
 import Loading from './Loading';
 import ErrorComponent from './ErrorComponent';
 import ItemLi from './ItemLi';
-import TitlePage from './TitlePage';
 import CartProductsCounter from './CartProductsCounter';
 import FormComponent from './FormComponent';
 import { product_details, home, cart } from '../utils/link';
 import {    
-    PRODUCTS_LIST_PAGE_NAME, ADD_TO_CART, 
     PRODUCT_DETAILS_LINK_PLACEHOLDER 
 } from '../utils/labels';
 import Navbar, { homeConfig, cartConfig } from './Navbar';
@@ -23,6 +21,7 @@ export default class ProductList extends React.Component{
         productsList: PropTypes.object.isRequired
     }
     submit = (values, product) => {
+        console.log('input', values)
         this.props.addProductToCart(product, values);
     }
     componentDidMount() {
@@ -34,11 +33,16 @@ export default class ProductList extends React.Component{
         const { productsList: { products } } = this.props;
         return products.map((product, index) => {
             return(
-                <ItemLi key={product.id+index}>
+                
+                <ItemLi  key={product.id+index}>
                     <Product product={product} name={product.name} price={product.price} />
-                    <FormComponent onSubmit={values => this.submit(values, product)} name={product.name}/>
-                    <CustomLink pathLink={`${product_details}/${product.id}`} text={PRODUCT_DETAILS_LINK_PLACEHOLDER} />
-                    <Button onClick={() => this.props.addProductToCart(product)} product={product} text={ADD_TO_CART} />
+                    <CustomLink pathLink={`${product_details}/${product.id}`} 
+                                text={PRODUCT_DETAILS_LINK_PLACEHOLDER} 
+                                style={{ outline: '1px solid red', margin: '1%' }} 
+                    />
+                    <FormComponent onSubmit={values => this.submit(values, product)} 
+                                    name={product.name}
+                    />
                 </ItemLi>
             )
         })
@@ -47,18 +51,19 @@ export default class ProductList extends React.Component{
     render(){
         const { productsList: { isLoading, error }, cartCounter} = this.props;
         return(
-            <>  
-                
-                <TitlePage title={PRODUCTS_LIST_PAGE_NAME} />
-                <Navbar firstConfig={homeConfig} secondConfig={cartConfig} />
+            <div className='container'>  
+                <div className='row'>
+                    <Navbar firstConfig={homeConfig} secondConfig={cartConfig} />
+                </div>
                 {isLoading && <Loading />}
                 {error && <ErrorComponent />}
-                
-                <ul>
-                    {this.renderList()}
-                </ul>
                 <CartProductsCounter counter={cartCounter} />
-            </>
+                <div className='row'>
+                    <ul>
+                        {this.renderList()}
+                    </ul>
+                </div>
+            </div>
         )
     }
 }

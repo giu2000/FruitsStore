@@ -31,7 +31,7 @@ import Navbar, { homeConfig, productListConfig} from './Navbar';
 //Component Empty Cart
 const EmptyCart = ({pathLink, text}) => {
     return(
-        <div className='container'>
+        <div className='telwe columns'>
             <div className='row' style={{outline: '1px solid black', display:'grid'}}>
                 <p style={{textAlign: 'center'}}>{EMPTY_CART}</p>
                 <CustomLink 
@@ -90,7 +90,7 @@ export default class Cart extends React.Component{
     render(){
         const { cart: { isLoading, error, products, totalPrice, counter } } = this.props;
         return(
-            <div>
+            <div className='container'>
                 
                 <Navbar firstConfig={homeConfig} secondConfig={productListConfig}/>
                 {isLoading && <Loading />}
@@ -98,8 +98,8 @@ export default class Cart extends React.Component{
                 
                 {products.length === 0 ? 
                     <EmptyCart pathLink={products_list} text={BACK_TO_PRODUCTS_LIST_LINK} />
-                    : <div className='container' style={{outline:'1px solid black'}}>
-                        <div className='row' style={{outline: '1px solid red'}}>
+                    : <div className='row' style={{ outline: '1px solid red' }}>
+                        <div className='telwe columns' style={{outline:'1px solid black'}}>
                             <table className='eight columns' style={{outline:'1px solid green'}}>
                                 <thead>
                                     <tr>
