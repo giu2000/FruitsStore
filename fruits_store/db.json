@@ -62,54 +62,5 @@
       "price": "260"
     }
   ],
-  "cart": [
-    {
-      "id": "2",
-      "name": "Apple",
-      "description": "Description",
-      "price": "200",
-      "quantity": 10,
-      "productTotalPrice": 2200
-    },
-    {
-      "id": "3",
-      "name": "Lemon",
-      "description": "Description",
-      "price": "300",
-      "quantity": 11,
-      "productTotalPrice": 3300
-    },
-    {
-      "id": "4",
-      "name": "Cherry",
-      "description": "Description",
-      "price": "270",
-      "quantity": 1,
-      "productTotalPrice": 270
-    },
-    {
-      "id": "1",
-      "name": "Orange",
-      "description": "Description",
-      "price": "100",
-      "quantity": 4,
-      "productTotalPrice": 400
-    },
-    {
-      "id": "7",
-      "name": "WaterMelon",
-      "description": "Description",
-      "price": "290",
-      "quantity": 9,
-      "productTotalPrice": 2610
-    },
-    {
-      "id": "8",
-      "name": "Pineapple",
-      "description": "Description",
-      "price": "40",
-      "quantity": 9,
-      "productTotalPrice": 360
-    }
-  ]
+  "cart": []
 }
