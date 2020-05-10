@@ -57,11 +57,7 @@ const addProductToCart = (product, quantityChoosen) => (dispatch, getState) => {
             productTotalPrice: prdctTotalPrc + qtyToAdd * product.price
         })
     })
-    .then(response => {
-
-        dispatch(addProductToCartSuccess());
-
-    })
+    .then(response => dispatch(addProductToCartSuccess()))
     .catch(error => dispatch(addProductToCartError(error)))
     dispatch(fetchCartProducts(baseUrlCart))
 }

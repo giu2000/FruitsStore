@@ -62,13 +62,9 @@ const removeProductFromCart = product => (dispatch, getState) => {
             }
         )
     })
-    .then(response => response.json())
-    .then(product => {
-        dispatch(removeProductFromCartSuccess());
-        dispatch(fetchCartProducts(baseUrlCart));
-        } 
-    )
+    .then(response => dispatch(removeProductFromCartSuccess()))
     .catch(error => dispatch(removeProductFromCartError(error)));
+    dispatch(fetchCartProducts(baseUrlCart));
 }
 
 export default removeProductFromCart;

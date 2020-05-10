@@ -4,6 +4,7 @@ import {
     REMOVE_ALL_PRODUCTS_FROM_CART_ERROR 
 } from "../types/ActionTypes"
 import { baseUrlCart } from "../../../utils/url";
+import fetchCartProducts from "./fetchCartProducts";
 
 const removeAllProductsFromCartRequest = () => {
     return {
@@ -11,12 +12,9 @@ const removeAllProductsFromCartRequest = () => {
     }
 }
 
-const removeAllProductsFromCartSuccess = products => {
+const removeAllProductsFromCartSuccess = () => {
     return{
         type: REMOVE_ALL_PRODUCTS_FROM_CART_SUCCESS,
-        payload: {
-            products
-        }
     }
 }
 
@@ -43,9 +41,11 @@ const removeAllProductsFromCart = () => (dispatch, getState) => {
     })
     dispatch(removeAllProductsFromCartRequest());
     Promise.all(requests)
-        .then(responses => Promise.all(responses.map(response => response.json())))
-        .then(prdcts => dispatch(removeAllProductsFromCartSuccess(prdcts)))
+        .then(response => {
+            dispatch(removeAllProductsFromCartSuccess())
+        })
         .catch(error =>  dispatch(removeAllProductsFromCartError(error)));
+        dispatch(fetchCartProducts())
 }
 
 export default removeAllProductsFromCart;

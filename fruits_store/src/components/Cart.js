@@ -60,11 +60,7 @@ export default class Cart extends React.Component{
     componentDidMount(){
         this.props.fetchCartProducts()
     }
-    componentDidUpdate(prevProps){
-        if(this.props.cart.isEmpty !== prevProps.cart.isEmpty){
-            this.props.fetchCartProducts()
-        }
-    }
+
     renderTable = products => {
         
         return(
