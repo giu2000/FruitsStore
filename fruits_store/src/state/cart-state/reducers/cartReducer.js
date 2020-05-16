@@ -20,8 +20,7 @@ const initialState = {
     error: "",
     products: [],
     totalPrice: 0,
-    counter: 0,
-    isEmpty: false
+    counter: 0
 }
 
 const cartReducer = (state = initialState, action) => {
@@ -33,7 +32,6 @@ const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true,
-                isEmpty: false
             }
         case FETCH_CART_PRODUCTS_SUCCESS:
         
@@ -41,7 +39,6 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 products: action.payload.products,
-                isEmpty: false
             }
         case FETCH_CART_PRODUCTS_ERROR:
         case ADD_PRODUCT_TO_CART_ERROR:
@@ -51,7 +48,6 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 error: action.payload.error,
-                isEmpty: false
             }
         case ADD_PRODUCT_TO_CART_SUCCESS:
         case REMOVE_PRODUCT_FROM_CART_SUCCESS:
@@ -59,7 +55,6 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 error: "",
-                isEmpty: false
             }
         case UPDATE_CART_TOTAL_PRICE:
             return{
@@ -67,19 +62,16 @@ const cartReducer = (state = initialState, action) => {
                 isLoading: false,
                 error: "",
                 totalPrice: action.payload.totalPrice,
-                isEmpty: false
             }
         case UPDATE_CART_PRODUCTS_COUNTER:
             return{
                 ...state,
                 counter: action.payload.counter,
-                isEmpty: false
             }
         case REMOVE_ALL_PRODUCTS_FROM_CART_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
-                isEmpty: true
             }
         default:
             return state
