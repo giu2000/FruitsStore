@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTyepes from 'prop-types';
 import FormComponent from './FormComponent';
-
 import Navbar, {
     homeConfig,
     cartConfig,
     productListConfig,
 } from './Navbar';
 
-import { 
-    PRODUCT_ID,
-    PRODUCT_NAME,
-    PRODUCT_DESCRIPTION,
-    PRODUCT_PRICE,
-} from '../utils/labels';
+import { Price } from './Price';
+import { Title } from './Title';
+import { Details } from './Details';
+import { ProductInfo } from './ProductInfo';
+import { ProductImage } from './ProductImage';
+import { Image } from './Image';
 
 export default class ProductDetails extends React.Component{
     static propTypes = {
@@ -29,40 +28,34 @@ export default class ProductDetails extends React.Component{
  
     render(){
         const { product } = this.props;
-        const titles = [PRODUCT_ID, PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE];
         return (
-            <>
-                
-                <div className='container'>
-                    <div className="row">
-                        <Navbar firstConfig={homeConfig} secondConfig={cartConfig} thirdConfig={productListConfig} />
-  
-                    </div>
-                    <div className="row">
-                        <div className="four columns" style={{margin: "5%", outline: "1px solid black"}}>
-                            <img src={require('./orange.jpg')} style={{ width: "50%"}} />
-                        </div>
-                        <div className="six columns" style={{outline: "1px solid black"}}>
-                            <div>
-                                <b>{product.name}</b>
-                            </div>
-                            <div>
-                                Details TBD
-                            </div>
-                            <div>
-                                ${product.price}
-                            </div>
-                            <div>
-                                <FormComponent onSubmit={values => this.submit(values, product)}
-                                    name={product.name}
+            <div className='container'>
+                <div className="row">
+                    <Navbar firstConfig={homeConfig} secondConfig={cartConfig} thirdConfig={productListConfig} />
+                </div>
+                <div className="row">
+                    <div className="four columns">
+                            <ProductImage>
+                                <Image
+                                    src={require('./orange.jpg')}
+                                    style={{ width: "50%" }}
                                 />
-                            </div>
+                            </ProductImage>
+                    </div>
+                    <div className="six columns" style={{outline: "1px solid black"}}>
+                        <ProductInfo>
+                                <Title title={product.name} />
+                                <Details />
+                                <Price price={product.price} />
+                        </ProductInfo>
+                        <div>
+                            <FormComponent onSubmit={values => this.submit(values, product)}
+                                name={product.name}
+                            />
                         </div>
                     </div>
                 </div>
-                
-                
-            </>
+            </div>
         )
     }
 }

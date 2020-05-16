@@ -6,3 +6,38 @@
     justify-content: center;
     align-items: center;
 }
+
+/*****************product info and children components***************/
+.product-info{
+    outline: 1px solid black;
+    padding: 0.5rem;
+}
+
+div.product-info > div{
+    margin: 0.5rem;
+}
+.price{
+    outline: 1px solid black;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+.title{
+    outline: 1px solid black;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 1rem; 
+}
+
+.details{
+    outline: 1px solid black;
+    font-size: 12px;
+    padding: 1rem;
+}
+
+/**********product image and children ************/
+.product-image{
+    outline: 1px solid black;
+    margin: 5%;
+}
