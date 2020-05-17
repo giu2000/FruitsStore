@@ -7,7 +7,7 @@ import Loading from './Loading';
 import ErrorComponent from './ErrorComponent';
 import ItemLi from './ItemLi';
 import CartProductsCounter from './CartProductsCounter';
-import FormComponent from './FormComponent';
+import { AddToCartForm } from './AddToCartForm';
 import { product_details, home, cart } from '../utils/link';
 import {    
     PRODUCT_DETAILS_LINK_PLACEHOLDER 
@@ -39,7 +39,7 @@ export default class ProductList extends React.Component{
                                 text={PRODUCT_DETAILS_LINK_PLACEHOLDER} 
                                 style={{ outline: '1px solid red', margin: '1%' }} 
                     />
-                    <FormComponent onSubmit={values => this.submit(values, product)} 
+                    <AddToCartForm onSubmit={values => this.submit(values, product)} 
                                     name={product.name}
                     />
                 </ItemLi>

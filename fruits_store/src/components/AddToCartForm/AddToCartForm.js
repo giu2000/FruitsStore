@@ -1,12 +1,13 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { Button } from '../Button';
 
 const parseInputToNumber = value => value ? parseInt(value) : 0;
 
-let FormComponent = props => {
+let AddToCartForm = props => {
     const { handleSubmit, name } = props;
     return (
-        <div style={{outline: '1px solid black', margin:'1%'}}>
+        <div >
             <form onSubmit={handleSubmit} className='row'>
                 <div>
                     <Field
@@ -17,15 +18,16 @@ let FormComponent = props => {
                         normalize={parseInputToNumber}
                     />
                 </div>
-                <div>
-                    <button type="submit">Add to cart</button>
-                </div>
+                <span>
+                    <Button
+                        text="Add"
+                        type="submit"
+                    />
+                </span>
             </form>
         </div>
     )
 }
 
-export default FormComponent = reduxForm({ form: 'numberElements' })(FormComponent);
-
-// <label htmlFor="numberProducts"></label>
+export default AddToCartForm = reduxForm({ form: 'numberElements' })(AddToCartForm);
 

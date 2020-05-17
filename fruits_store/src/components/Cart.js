@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
+
+import { Button } from './Button'
 import Loading from './Loading';
 import ErrorComponent from './ErrorComponent';
 import TitlePage from './TitlePage';

@@ -6,7 +6,6 @@ import Home from '../Home';
 import ProductsListContainer from '../../containers/ProductListContainer';
 import CartContainer from'../../containers/CartContainer';
 import ProductDetailsContainer from '../../containers/ProductDetailsContainer';
-import '../../styles/style.css';
 
 const App = ({store}) => (
   <Provider store={store}>
