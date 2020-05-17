@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import ProductDetails from '../components/ProductDetails';
+import { ProductDetails } from '../components/ProductDetails';
 import fetchProductDetails from "../state/product-details-state/actions/fetchProductDetails";
 import addProductToCart from "../state/cart-state/actions/addProductToCart";
 import fetchCartProducts from "../state/cart-state/actions/fetchCartProducts";

@@ -77,8 +77,8 @@
       "name": "Pear",
       "description": "Description",
       "price": "140",
-      "quantity": 8,
-      "productTotalPrice": 1120
+      "quantity": 9,
+      "productTotalPrice": 1260
     }
   ]
 }

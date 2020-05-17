@@ -5,16 +5,16 @@ import Navbar, {
     homeConfig,
     cartConfig,
     productListConfig,
-} from './Navbar';
+} from '../Navbar';
 
-import { Price } from './Price';
-import { Title } from './Title';
-import { Details } from './Details';
-import { ProductInfo } from './ProductInfo';
-import { ProductImage } from './ProductImage';
-import { Image } from './Image';
-import { ProductAction } from './ProductAction';
-import { AddToCartForm } from './AddToCartForm';
+import { Price } from '../Price';
+import { Title } from '../Title';
+import { Details } from '../Details';
+import { ProductInfo } from '../ProductInfo';
+import { ProductImage } from '../ProductImage';
+import { Image } from '../Image';
+import { ProductAction } from '../ProductAction';
+import { AddToCartForm } from '../AddToCartForm';
 
 export default class ProductDetails extends React.Component{
     static propTypes = {
@@ -30,16 +30,21 @@ export default class ProductDetails extends React.Component{
  
     render(){
         const { product } = this.props;
+        const { name, price } = product;
         return (
             <div className='container'>
                 <div className="navbar">
                     <div className="row">
-                        <Navbar firstConfig={homeConfig} secondConfig={cartConfig} thirdConfig={productListConfig} />
+                        <Navbar 
+                            firstConfig={homeConfig} 
+                            secondConfig={cartConfig} 
+                            thirdConfig={productListConfig} 
+                        />
                     </div>
                 </div>
                 <div className="product-details">
                     <div className="row">
-                        <div className="four columns" style={{ outline: "1px solid red" }}>
+                        <div className="four columns">
                             <ProductImage>
                                 <Image
                                     alt={"potho"}
@@ -47,16 +52,20 @@ export default class ProductDetails extends React.Component{
                                 />
                             </ProductImage>
                         </div>
-                        <div className="six columns" style={{ outline: "1px solid red" }}>
+                        <div className="six columns">
                             <ProductInfo>
-                                <Title title={product.name} />
+                                <Title 
+                                    title={name}
+                                />
                                 <Details />
-                                <Price price={product.price} />
+                                <Price 
+                                    price={price}
+                                />
                             </ProductInfo>
                             <ProductAction>
                                 <AddToCartForm
                                     onSubmit={values => this.submit(values, product)}
-                                    name={product.name}
+                                    name={name}
                                 />
                             </ProductAction>
                         </div>

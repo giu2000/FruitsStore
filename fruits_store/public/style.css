@@ -69,4 +69,8 @@ div.product-info > div{
 }
 
 
-/**************otiline per le griglie**********************/
+/********item li***************/
+.item-li{
+    outline: 1px solid black;
+    margin-left: 0rem;
+}
