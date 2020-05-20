@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Cart from "../components/Cart";
+import { Cart } from "../components/Cart";
 import removeProductFromCart from "../state/cart-state/actions/removeProductFromCart";
 import addProductToCart from "../state/cart-state/actions/addProductToCart";
 import fetchCartProducts from "../state/cart-state/actions/fetchCartProducts";

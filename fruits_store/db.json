@@ -62,23 +62,5 @@
       "price": "260"
     }
   ],
-  "cart": [
-    {
-      "id": "1",
-      "name": "Orange",
-      "description": "Description",
-      "price": "100",
-      "image_src": "./orange.jpg",
-      "quantity": 3,
-      "productTotalPrice": 300
-    },
-    {
-      "id": "5",
-      "name": "Pear",
-      "description": "Description",
-      "price": "140",
-      "quantity": 9,
-      "productTotalPrice": 1260
-    }
-  ]
+  "cart": []
 }
