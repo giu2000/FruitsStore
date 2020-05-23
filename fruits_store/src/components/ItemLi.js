@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ItemLi = ({children}) => {
     return(
-        <div className='four columns' style={{ outline: '1px solid black', marginLeft:'0%' }}>
+        <div>
             {children}
         </div>
     )

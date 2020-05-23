@@ -1,5 +1,5 @@
 import React from 'react';
-import { ERROR } from '../utils/labels';
+import { ERROR } from '../../utils/labels';
 
 const ErrorComponent = () => {
     return (
