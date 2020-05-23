@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Loading from '../Loading';
-import ErrorComponent from '../ErrorComponent';
+import { Loading } from '../Loading';
+import { ErrorComponent } from '../ErrorComponent';
 import ItemLi from '../ItemLi';
-import CartProductsCounter from '../CartProductsCounter';
+import { CartProductsCounter } from '../CartProductsCounter';
 import { AddToCartForm } from '../AddToCartForm';
 import { product_details } from '../../utils/link';
 import Navbar, { homeConfig, cartConfig } from '../Navbar';
@@ -38,8 +38,8 @@ export default class ProductList extends React.Component{
                         <div>
                             <ProductImage>
                                 <ImageWithLink
-                                    src={require('../orange.jpg')}
-                                    alt="photo"
+                                    /*src={require('../orange.jpg')}*/
+                                   /*alt="photo"*/
                                     style={{ width: "30%", height: "30%" }}
                                     pathLink={`${product_details}/${id}`}
                                 />

@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Button } from '../Button'
-import Loading from '../Loading';
-import ErrorComponent from '../ErrorComponent';
+import { Loading } from '../Loading';
+import { ErrorComponent } from '../ErrorComponent';
 import CustomLink from '../CustomLink';
-import CartProductsCounter from '../CartProductsCounter';
+import { CartProductsCounter } from '../CartProductsCounter';
 import { 
     EMPTY_CART, 
-
     BACK_TO_PRODUCTS_LIST_LINK,
     DELETE_ALL,
     TOTAL_PRICE,

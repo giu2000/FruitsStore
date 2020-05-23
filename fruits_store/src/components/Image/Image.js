@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+
 const Image = props => {
     const { src, alt, style } = props;
     return(
         <div className='image'>
             <img 
-                src={src}
+                src={require('../orange.jpg')}
                 alt={alt}
                 style={style}
             />
@@ -20,6 +21,7 @@ Image.propTypes = {
     alt: PropTypes.string,
     style: PropTypes.object
 }
+
 
 
 export default Image;

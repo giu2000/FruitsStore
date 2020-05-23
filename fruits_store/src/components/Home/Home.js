@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar, { productListConfig, cartConfig } from './Navbar';
+import Navbar, { productListConfig, cartConfig } from '../Navbar';
 
 const Home = () => {
     return (

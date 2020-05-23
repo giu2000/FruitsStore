@@ -62,5 +62,23 @@
       "price": "260"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "2",
+      "name": "Apple",
+      "description": "Description",
+      "price": "200",
+      "quantity": null,
+      "productTotalPrice": null
+    },
+    {
+      "id": "1",
+      "name": "Orange",
+      "description": "Description",
+      "price": "100",
+      "image_src": "./orange.jpg",
+      "quantity": 0,
+      "productTotalPrice": 0
+    }
+  ]
 }
