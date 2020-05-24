@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTyepes from 'prop-types';
 
-import Navbar, {
-    homeConfig,
-    cartConfig,
-    productListConfig,
-} from '../Navbar';
+// import Navbar, {
+//     homeConfig,
+//     cartConfig,
+//     productListConfig,
+// } from '../Navbar';
 
 import { Price } from '../Price';
 import { Title } from '../Title';
@@ -33,15 +33,6 @@ export default class ProductDetails extends React.Component{
         const { name, price } = product;
         return (
             <div className='container'>
-                <div className="navbar">
-                    <div className="row">
-                        <Navbar 
-                            firstConfig={homeConfig} 
-                            secondConfig={cartConfig} 
-                            thirdConfig={productListConfig} 
-                        />
-                    </div>
-                </div>
                 <div className="product-details">
                     <div className="row">
                         <div className="four columns">
@@ -75,4 +66,3 @@ export default class ProductDetails extends React.Component{
         )
     }
 }
-

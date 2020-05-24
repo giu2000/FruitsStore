@@ -18,7 +18,6 @@ import {
     product_details, 
     products_list 
 } from '../../utils/link';
-import Navbar, { homeConfig, productListConfig} from '../Navbar';
 import { ProductImage } from '../ProductImage';
 import { ImageWithLink } from '../ImageWithLink';
 import { ProductAction } from '../ProductAction';
@@ -109,8 +108,6 @@ export default class Cart extends React.Component{
         const { cart: { isLoading, error, products, totalPrice, counter } } = this.props;
         return(
             <div className='container'>
-                
-                <Navbar firstConfig={homeConfig} secondConfig={productListConfig}/>
                 {isLoading && <Loading />}
                 {error && <ErrorComponent />}
                 {products.length === 0 ? 

@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CartCounterContainer } from '../CartCounter';
+import { Navbar } from '../Navbar';
 
 const Layout = props => {
     return (
         <div className='layout'>
             <CartCounterContainer counter={props.counter}/>
+            <Navbar />
             {props.children}
         </div>
     )

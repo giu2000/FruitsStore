@@ -5,7 +5,7 @@ import { ErrorComponent } from '../ErrorComponent';
 import ItemLi from '../ItemLi';
 import { AddToCartForm } from '../AddToCartForm';
 import { product_details } from '../../utils/link';
-import Navbar, { homeConfig, cartConfig } from '../Navbar';
+// import Navbar, { homeConfig, cartConfig } from '../Navbar/Navbar';
 import { ProductImage } from '../ProductImage';
 import { Title } from '../Title';
 import { Details } from '../Details';
@@ -72,7 +72,7 @@ export default class ProductList extends React.Component{
         return(
             <div className='container'>  
                 <div className='row'>
-                    <Navbar firstConfig={homeConfig} secondConfig={cartConfig} />
+                    
                 </div>
                 {isLoading && <Loading />}
                 {error && <ErrorComponent />}
@@ -85,3 +85,6 @@ export default class ProductList extends React.Component{
         )
     }
 }
+
+
+//<Navbar firstConfig={homeConfig} secondConfig={cartConfig} />
