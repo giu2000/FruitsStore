@@ -5,7 +5,6 @@ import { ErrorComponent } from '../ErrorComponent';
 import ItemLi from '../ItemLi';
 import { AddToCartForm } from '../AddToCartForm';
 import { product_details } from '../../utils/link';
-// import Navbar, { homeConfig, cartConfig } from '../Navbar/Navbar';
 import { ProductImage } from '../ProductImage';
 import { Title } from '../Title';
 import { Details } from '../Details';
@@ -85,6 +84,3 @@ export default class ProductList extends React.Component{
         )
     }
 }
-
-
-//<Navbar firstConfig={homeConfig} secondConfig={cartConfig} />

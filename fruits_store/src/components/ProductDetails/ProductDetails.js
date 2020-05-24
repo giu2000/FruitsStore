@@ -1,12 +1,5 @@
 import React from 'react';
 import PropTyepes from 'prop-types';
-
-// import Navbar, {
-//     homeConfig,
-//     cartConfig,
-//     productListConfig,
-// } from '../Navbar';
-
 import { Price } from '../Price';
 import { Title } from '../Title';
 import { Details } from '../Details';

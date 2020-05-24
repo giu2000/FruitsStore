@@ -1,5 +1,6 @@
 import React from 'react';
 import CustomLink from '../CustomLink';
+import { useLocation } from 'react-router-dom';
 import {
     HOME_LINK_PLACEHOLDER,
     PRODUCTS_LIST_LINK_PLACEHOLDER,
@@ -11,19 +12,39 @@ import {
     cart
 } from '../../utils/link';
 
+const routeConfig = {
+    home: {
+        pathLink: home,
+        text: HOME_LINK_PLACEHOLDER 
+    },
+    productList: {
+        pathLink: products_list,
+        text: PRODUCTS_LIST_LINK_PLACEHOLDER
+    },
+    cart: {
+        pathLink: cart,
+        text: CART_LINK_PLACEHOLDER
+    }
+}
+
 const Navbar = props => {
+    const location = useLocation(); // ritorna un oggetto con le info delal Current Url
+    const renderList = Object.keys(routeConfig).filter(key => routeConfig[key].pathLink !== location.pathname)
+                                            .map(key => {
+                                                const { pathLink, text } = routeConfig[key]
+                                                return(
+                                                    <li key={key}>
+                                                        <CustomLink 
+                                                            pathLink={pathLink}
+                                                            text={text}
+                                                        />
+                                                    </li>
+                                                )
+                                            })
     return(
         <div className='navbar'>
             <ul>
-                <li>
-                    <CustomLink pathLink={home} text={HOME_LINK_PLACEHOLDER} />
-                </li>
-                <li>
-                    <CustomLink pathLink={cart} text={CART_LINK_PLACEHOLDER} />
-                </li>
-                <li>
-                    <CustomLink pathLink={products_list} text={PRODUCTS_LIST_LINK_PLACEHOLDER} />
-                </li>
+               {renderList} 
             </ul>
         </div>
     )
