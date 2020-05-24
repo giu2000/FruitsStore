@@ -32,7 +32,7 @@
       "price": "140"
     },
     {
-      "id": "7",
+      "id": "6",
       "name": "Grapes",
       "description": "Description",
       "price": "120"
@@ -64,21 +64,21 @@
   ],
   "cart": [
     {
-      "id": "2",
-      "name": "Apple",
-      "description": "Description",
-      "price": "200",
-      "quantity": null,
-      "productTotalPrice": null
-    },
-    {
       "id": "1",
       "name": "Orange",
       "description": "Description",
       "price": "100",
       "image_src": "./orange.jpg",
-      "quantity": 0,
-      "productTotalPrice": 0
+      "quantity": 6,
+      "productTotalPrice": 600
+    },
+    {
+      "id": "2",
+      "name": "Apple",
+      "description": "Description",
+      "price": "200",
+      "quantity": 5,
+      "productTotalPrice": 1000
     }
   ]
 }

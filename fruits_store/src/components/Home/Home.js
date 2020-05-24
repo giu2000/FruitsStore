@@ -1,10 +1,9 @@
 import React from 'react';
-import Navbar, { productListConfig, cartConfig } from '../Navbar';
 
 const Home = () => {
     return (
         <div >
-            <Navbar firstConfig={productListConfig} secondConfig={cartConfig}/>
+           Home
         </div>
     )
 }

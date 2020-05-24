@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { Button } from '../Button'
 import { Loading } from '../Loading';
 import { ErrorComponent } from '../ErrorComponent';
 import CustomLink from '../CustomLink';
-import { CartProductsCounter } from '../CartProductsCounter';
+
 import { 
     EMPTY_CART, 
     BACK_TO_PRODUCTS_LIST_LINK,
@@ -18,8 +17,6 @@ import {
     product_details, 
     products_list 
 } from '../../utils/link';
-import Navbar, { homeConfig, productListConfig} from '../Navbar';
-import ItemLi from '../ItemLi';
 import { ProductImage } from '../ProductImage';
 import { ImageWithLink } from '../ImageWithLink';
 import { ProductAction } from '../ProductAction';
@@ -47,8 +44,6 @@ EmptyCart.propTypes = {
     text: PropTypes.string
 }
 
-
-
 export default class Cart extends React.Component{
 
     static propTypes = {
@@ -66,7 +61,7 @@ export default class Cart extends React.Component{
                 const { id, name, quantity, productTotalPrice } = product;
                 return(
                     <div className="nine columns" >
-                        <ItemLi key={product.id + index}>
+                        <div key={product.id + index}>
                             <div className="two columns">
                                 <ProductImage>
                                     <ImageWithLink
@@ -98,10 +93,10 @@ export default class Cart extends React.Component{
                             </div>
                             <div className="two columns">
                                 <Price
-                                    price={productTotalPrice}
+                                    price={String(productTotalPrice)}
                                 />
                             </div>
-                        </ItemLi>
+                        </div>
                     </div>
 
                 )
@@ -112,8 +107,6 @@ export default class Cart extends React.Component{
         const { cart: { isLoading, error, products, totalPrice, counter } } = this.props;
         return(
             <div className='container'>
-                
-                <Navbar firstConfig={homeConfig} secondConfig={productListConfig}/>
                 {isLoading && <Loading />}
                 {error && <ErrorComponent />}
                 {products.length === 0 ? 
@@ -124,7 +117,6 @@ export default class Cart extends React.Component{
                         </div>
                         <div className='three columns'>
                            <div>{`${TOTAL_PRICE}: $ ${totalPrice}`}</div>
-                            <CartProductsCounter counter={counter} />
                             <Button onClick={() => this.props.removeAllProductsFromCart(products)} text={DELETE_ALL} />
                         </div>
 

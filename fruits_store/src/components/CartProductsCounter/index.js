@@ -1,1 +1,0 @@
-export { default as CartProductsCounter } from './CartProductsCounter';
