@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 const ItemLi = ({children}) => {
     return(
-        <div>
+        <div >
             {children}
         </div>
     )
 }
 
 ItemLi.propTypes = {
+    key: PropTypes.string,
     children: PropTypes.node
 }
 

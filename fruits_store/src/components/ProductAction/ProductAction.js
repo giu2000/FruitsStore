@@ -10,7 +10,7 @@ const ProductAction = props => {
 }
 
 ProductAction.propTypes = {
-    children: PropTypes.object
+    children: PropTypes.node
 }
 
 export default ProductAction;

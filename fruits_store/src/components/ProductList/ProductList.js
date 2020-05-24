@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Loading } from '../Loading';
 import { ErrorComponent } from '../ErrorComponent';
 import ItemLi from '../ItemLi';
-import { CartProductsCounter } from '../CartProductsCounter';
 import { AddToCartForm } from '../AddToCartForm';
 import { product_details } from '../../utils/link';
 import Navbar, { homeConfig, cartConfig } from '../Navbar';
@@ -69,7 +68,7 @@ export default class ProductList extends React.Component{
     }
 
     render(){
-        const { productsList: { isLoading, error }, cartCounter} = this.props;
+        const { productsList: { isLoading, error } } = this.props;
         return(
             <div className='container'>  
                 <div className='row'>
@@ -77,7 +76,6 @@ export default class ProductList extends React.Component{
                 </div>
                 {isLoading && <Loading />}
                 {error && <ErrorComponent />}
-                <CartProductsCounter counter={cartCounter} />
                 <div className='row'>
                     <ul>
                         {this.renderList()}
