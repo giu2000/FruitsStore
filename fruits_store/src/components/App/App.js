@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Home } from '../Home';
 import ProductsListContainer from '../../containers/ProductListContainer';
 import { CartContainer } from'../../containers/CartContainer';
-import ProductDetailsContainer from '../../containers/ProductDetailsContainer';
+import { ProductDetailsContainer } from '../ProductDetails';
 import { Layout } from '../Layout';
 
 const App = ({store}) => (

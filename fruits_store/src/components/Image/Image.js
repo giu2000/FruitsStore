@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-
 
 const Image = props => {
     const { src, alt, style } = props;
     return(
         <div className='image'>
             <img 
-                src={require('../orange.jpg')}
+                src={src}
                 alt={alt}
                 style={style}
             />

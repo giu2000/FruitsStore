@@ -17,9 +17,7 @@ import {
     product_details, 
     products_list 
 } from '../../utils/link';
-import { ProductImage } from '../ProductImage';
 import { ImageWithLink } from '../ImageWithLink';
-import { ProductAction } from '../ProductAction';
 import { Title } from '../Title';
 import { Price } from '../Price';
 
@@ -62,34 +60,28 @@ export default class Cart extends React.Component{
                 return(
                     <div className="nine columns" >
                         <div key={product.id + index}>
-                            <div className="two columns">
-                                <ProductImage>
-                                    <ImageWithLink
-                                        src={require('../orange.jpg')}
-                                        alt="photo"
-                                        style={{ width: "30%", height: "30%" }}
-                                        pathLink={`${product_details}/${id}`}
-                                    />
-                                </ProductImage>
-                            </div>
+                            <ImageWithLink
+                                src={require('../../orange.jpg')}
+                                alt="photo"
+                                style={{ width: "30%", height: "30%" }}
+                                pathLink={`${product_details}/${id}`}
+                            />
                             <div className="two columns">
                                 <Title
                                     title={name}
                                 />
                             </div>
 
-                            <div className="three columns" >
-                                <ProductAction>
-                                    <Button
-                                        onClick={() => removeProductFromCart(product)}
-                                        text={remove_from_cart_symbol}
-                                    />
-                                    <span>{quantity}</span>
-                                    <Button
-                                        onClick={() => addProductToCart(product)}
-                                        text={add_to_cart_symbol}
-                                    />
-                                </ProductAction>
+                            <div className="three columns" className='product-action'>
+                                <Button
+                                    onClick={() => removeProductFromCart(product)}
+                                    text={remove_from_cart_symbol}
+                                />
+                                <span>{quantity}</span>
+                                <Button
+                                    onClick={() => addProductToCart(product)}
+                                    text={add_to_cart_symbol}
+                                />
                             </div>
                             <div className="two columns">
                                 <Price

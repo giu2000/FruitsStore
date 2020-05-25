@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTyepes from 'prop-types';
-import { Price } from '../Price';
-import { Title } from '../Title';
-import { Details } from '../Details';
+import { connect } from 'react-redux';
 import { ProductInfo } from '../ProductInfo';
-import { ProductImage } from '../ProductImage';
 import { Image } from '../Image';
-import { ProductAction } from '../ProductAction';
 import { AddToCartForm } from '../AddToCartForm';
+import fetchProductDetails from "../../state/product-details-state/actions/fetchProductDetails";
+import addProductToCart from "../../state/cart-state/actions/addProductToCart";
+import fetchCartProducts from "../../state/cart-state/actions/fetchCartProducts";
 
-export default class ProductDetails extends React.Component{
+class ProductDetails extends React.Component{
     static propTypes = {
         product: PropTyepes.object.isRequired
     }
@@ -29,29 +28,21 @@ export default class ProductDetails extends React.Component{
                 <div className="product-details">
                     <div className="row">
                         <div className="four columns">
-                            <ProductImage>
-                                <Image
-                                    alt={"potho"}
-                                    style={{ width: "50%" }}
-                                />
-                            </ProductImage>
+                            <Image
+                                alt={"potho"}
+                                style={{ width: "50%" }}
+                            />
                         </div>
                         <div className="six columns">
-                            <ProductInfo>
-                                <Title 
-                                    title={name}
-                                />
-                                <Details />
-                                <Price 
-                                    price={price}
-                                />
-                            </ProductInfo>
-                            <ProductAction>
-                                <AddToCartForm
-                                    onSubmit={values => this.submit(values, product)}
-                                    name={name}
-                                />
-                            </ProductAction>
+                            <ProductInfo
+                                title={name}
+                                details={'TBD'}
+                                price={price}
+                            />
+                            <AddToCartForm
+                                onSubmit={values => this.submit(values, product)}
+                                name={name}
+                            />
                         </div>
                     </div>
                 </div>
@@ -59,3 +50,23 @@ export default class ProductDetails extends React.Component{
         )
     }
 }
+
+const mapStateToProps = state => {
+    const { products, cart } = state
+    return {
+        product: products.currentProduct,
+        cart: cart
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        fetchProductDetails: () => dispatch(fetchProductDetails(ownProps.productId)),
+        fetchCartProducts: () => dispatch(fetchCartProducts),
+        addProductToCart: (product, quantityChoosen) => dispatch(addProductToCart(product, quantityChoosen)),
+    }
+}
+
+const ProductDetailsContainer = connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
+
+export default ProductDetailsContainer;
