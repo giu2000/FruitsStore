@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Button } from '../Button'
 import { Loading } from '../Loading';
 import { ErrorComponent } from '../ErrorComponent';
 import CustomLink from '../CustomLink';
+import { ImageWithLink } from '../ImageWithLink';
+import { Title } from '../Title';
+import { Price } from '../Price';
 
 import { 
     EMPTY_CART, 
@@ -17,11 +21,14 @@ import {
     product_details, 
     products_list 
 } from '../../utils/link';
-import { ProductImage } from '../ProductImage';
-import { ImageWithLink } from '../ImageWithLink';
-import { ProductAction } from '../ProductAction';
-import { Title } from '../Title';
-import { Price } from '../Price';
+
+import { baseUrlCart } from '../../utils/url';
+
+import fetchCartProducts from '../../state/cart-state/actions/fetchCartProducts';
+import addProductToCart from '../../state/cart-state/actions/addProductToCart';
+import removeProductFromCart from '../../state/cart-state/actions/removeProductFromCart';
+import removeAllProductsFromCart from '../../state/cart-state/actions/removeAllProductsFromCart';
+import updateCartProductsCounter from '../../state/cart-state/actions/updateCartProductsCounter';
 
 //Component Empty Cart
 const EmptyCart = ({pathLink, text}) => {
@@ -44,7 +51,7 @@ EmptyCart.propTypes = {
     text: PropTypes.string
 }
 
-export default class Cart extends React.Component{
+class Cart extends React.Component{
 
     static propTypes = {
         cart: PropTypes.object.isRequired
@@ -60,36 +67,30 @@ export default class Cart extends React.Component{
             products.map((product, index) => {
                 const { id, name, quantity, productTotalPrice } = product;
                 return(
-                    <div className="nine columns" >
-                        <div key={product.id + index}>
-                            <div className="two columns">
-                                <ProductImage>
-                                    <ImageWithLink
-                                        src={require('../orange.jpg')}
-                                        alt="photo"
-                                        style={{ width: "30%", height: "30%" }}
-                                        pathLink={`${product_details}/${id}`}
-                                    />
-                                </ProductImage>
-                            </div>
+                    <div className="nine columns" key={product.id + index}>
+                        <div >
+                            <ImageWithLink
+                                src={require('../../orange.jpg')}
+                                alt="photo"
+                                style={{ width: "30%", height: "30%" }}
+                                pathLink={`${product_details}/${id}`}
+                            />
                             <div className="two columns">
                                 <Title
                                     title={name}
                                 />
                             </div>
 
-                            <div className="three columns" >
-                                <ProductAction>
-                                    <Button
-                                        onClick={() => removeProductFromCart(product)}
-                                        text={remove_from_cart_symbol}
-                                    />
-                                    <span>{quantity}</span>
-                                    <Button
-                                        onClick={() => addProductToCart(product)}
-                                        text={add_to_cart_symbol}
-                                    />
-                                </ProductAction>
+                            <div className="three columns" className='product-action'>
+                                <Button
+                                    onClick={() => removeProductFromCart(product)}
+                                    text={remove_from_cart_symbol}
+                                />
+                                <span>{quantity}</span>
+                                <Button
+                                    onClick={() => addProductToCart(product)}
+                                    text={add_to_cart_symbol}
+                                />
                             </div>
                             <div className="two columns">
                                 <Price
@@ -104,7 +105,7 @@ export default class Cart extends React.Component{
         )
     }
     render(){
-        const { cart: { isLoading, error, products, totalPrice, counter } } = this.props;
+        const { cart: { isLoading, error, products, totalPrice } } = this.props;
         return(
             <div className='container'>
                 {isLoading && <Loading />}
@@ -127,3 +128,18 @@ export default class Cart extends React.Component{
         )
     }
 }
+
+const mapStateToProps = state => ({ cart: state.cart });
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchCartProducts: () => dispatch(fetchCartProducts(baseUrlCart)),
+        addProductToCart: product => dispatch(addProductToCart(product)),
+        removeProductFromCart: product => dispatch(removeProductFromCart(product)),
+        removeAllProductsFromCart: () => dispatch(removeAllProductsFromCart()),
+        updateCartProductsCounter: () => dispatch(updateCartProductsCounter(baseUrlCart))
+    }
+}
+
+const CartContainer = connect(mapStateToProps, mapDispatchToProps)(Cart);
+
+export default CartContainer;

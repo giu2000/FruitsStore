@@ -69,8 +69,8 @@
       "description": "Description",
       "price": "100",
       "image_src": "./orange.jpg",
-      "quantity": 6,
-      "productTotalPrice": 600
+      "quantity": 14,
+      "productTotalPrice": 1400
     },
     {
       "id": "2",
@@ -79,6 +79,14 @@
       "price": "200",
       "quantity": 5,
       "productTotalPrice": 1000
+    },
+    {
+      "id": "3",
+      "name": "Lemon",
+      "description": "Description",
+      "price": "300",
+      "quantity": 10,
+      "productTotalPrice": 3000
     }
   ]
 }

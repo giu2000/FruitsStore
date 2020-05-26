@@ -12,7 +12,6 @@ class CartCounter extends React.Component{
 
     componentDidMount(){
         this.props.updateCartCounter();
-        console.log(this.props.counter)
     }
 
     render(){

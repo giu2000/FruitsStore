@@ -2,19 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Loading } from '../Loading';
 import { ErrorComponent } from '../ErrorComponent';
-import ItemLi from '../ItemLi';
 import { AddToCartForm } from '../AddToCartForm';
 import { product_details } from '../../utils/link';
-import { ProductImage } from '../ProductImage';
-import { Title } from '../Title';
-import { Details } from '../Details';
-import { Price } from '../Price';
-import { ImageWithLink } from '../ImageWithLink';
 import { ProductInfo } from '../ProductInfo';
+import { ImageWithLink } from '../ImageWithLink';
+import fetchProducts from '../../state/products-state/actions/fetchProducts';
+import fetchProductDetails from '../../state/product-details-state/actions/fetchProductDetails';
+import addProductToCart from '../../state/cart-state/actions/addProductToCart';
+import updateCartProductsCounter from '../../state/cart-state/actions/updateCartProductsCounter'
+import { baseUrlProducts } from '../../utils/url';
+import { connect } from 'react-redux';
 
-
-
-export default class ProductList extends React.Component{
+class ProductList extends React.Component{
     static propTypes = {
         productsList: PropTypes.object.isRequired
     }
@@ -31,36 +30,27 @@ export default class ProductList extends React.Component{
         return products.map((product, index) => {
             const { name, price, id } = product;
             return(
-                <div className="item-li" className="four columns" style={{marginLeft:0}}>
-                    <ItemLi key={product.id + index}>
+                <div className="item-li" className="four columns" style={{ marginLeft: 0 }} key={name + index}>
+                    <div >
                         <div>
-                            <ProductImage>
-                                <ImageWithLink
-                                    /*src={require('../orange.jpg')}*/
-                                   /*alt="photo"*/
-                                    style={{ width: "30%", height: "30%" }}
-                                    pathLink={`${product_details}/${id}`}
-                                />
-                            </ProductImage>
+                            <ImageWithLink
+                                src={require('../../orange.jpg')}
+                                alt="photo"
+                                style={{ width: "30%", height: "30%" }}
+                                pathLink={`${product_details}/${id}`}
+                            />
                         </div>
-                        <div>
-                            <ProductInfo>
-                                <Title
-                                    title={name}
-                                />
-                                <Details
-                                    details="DETAILS TBD"
-                                />
-                                <Price
-                                    price={price}
-                                />
-                                <AddToCartForm
-                                    onSubmit={values => this.submit(values, product)}
-                                    name={name}
-                                />
-                            </ProductInfo>
-                        </div>
-                    </ItemLi>
+                        <ProductInfo
+                            title={name}
+                            details={'TBD'}
+                            price={price}
+                        />
+                        <AddToCartForm
+                            onSubmit={values => this.submit(values, product)}
+                            name={name}
+                        />
+                     
+                    </div>
                 </div>
             )
         })
@@ -70,9 +60,6 @@ export default class ProductList extends React.Component{
         const { productsList: { isLoading, error } } = this.props;
         return(
             <div className='container'>  
-                <div className='row'>
-                    
-                </div>
                 {isLoading && <Loading />}
                 {error && <ErrorComponent />}
                 <div className='row'>
@@ -84,3 +71,22 @@ export default class ProductList extends React.Component{
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        productsList: state.products,
+        cartCounter: state.cart.counter
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchProducts: () => dispatch(fetchProducts(baseUrlProducts)),
+        fetchProductDetails: productId => dispatch(fetchProductDetails(productId)),
+        addProductToCart: (product, quantityChoosen) => dispatch(addProductToCart(product, quantityChoosen)),
+        updateCartProductsCounter: () => dispatch(updateCartProductsCounter())
+    }
+}
+
+const ProductsListContainer = connect(mapStateToProps, mapDispatchToProps)(ProductList);
+
+export default ProductsListContainer;

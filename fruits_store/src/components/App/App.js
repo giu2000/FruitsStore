@@ -1,11 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Home } from '../Home';
-import ProductsListContainer from '../../containers/ProductListContainer';
-import { CartContainer } from'../../containers/CartContainer';
-import ProductDetailsContainer from '../../containers/ProductDetailsContainer';
+import { ProductsListContainer } from '../ProductList';
+import { CartContainer } from'../Cart';
+import { ProductDetailsContainer } from '../ProductDetails';
 import { Layout } from '../Layout';
 
 const App = ({store}) => (
