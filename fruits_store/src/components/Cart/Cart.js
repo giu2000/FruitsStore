@@ -67,8 +67,8 @@ class Cart extends React.Component{
             products.map((product, index) => {
                 const { id, name, quantity, productTotalPrice } = product;
                 return(
-                    <div className="nine columns" >
-                        <div key={product.id + index}>
+                    <div className="nine columns" key={product.id + index}>
+                        <div >
                             <ImageWithLink
                                 src={require('../../orange.jpg')}
                                 alt="photo"
@@ -105,7 +105,7 @@ class Cart extends React.Component{
         )
     }
     render(){
-        const { cart: { isLoading, error, products, totalPrice, counter } } = this.props;
+        const { cart: { isLoading, error, products, totalPrice } } = this.props;
         return(
             <div className='container'>
                 {isLoading && <Loading />}

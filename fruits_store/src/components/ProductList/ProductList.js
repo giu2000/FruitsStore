@@ -30,8 +30,8 @@ class ProductList extends React.Component{
         return products.map((product, index) => {
             const { name, price, id } = product;
             return(
-                <div className="item-li" className="four columns" style={{marginLeft:0}}>
-                    <div key={product.id + index}>
+                <div className="item-li" className="four columns" style={{ marginLeft: 0 }} key={name + index}>
+                    <div >
                         <div>
                             <ImageWithLink
                                 src={require('../../orange.jpg')}
