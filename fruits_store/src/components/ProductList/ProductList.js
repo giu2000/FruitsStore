@@ -6,8 +6,14 @@ import { AddToCartForm } from '../AddToCartForm';
 import { product_details } from '../../utils/link';
 import { ProductInfo } from '../ProductInfo';
 import { ImageWithLink } from '../ImageWithLink';
+import fetchProducts from '../../state/products-state/actions/fetchProducts';
+import fetchProductDetails from '../../state/product-details-state/actions/fetchProductDetails';
+import addProductToCart from '../../state/cart-state/actions/addProductToCart';
+import updateCartProductsCounter from '../../state/cart-state/actions/updateCartProductsCounter'
+import { baseUrlProducts } from '../../utils/url';
+import { connect } from 'react-redux';
 
-export default class ProductList extends React.Component{
+class ProductList extends React.Component{
     static propTypes = {
         productsList: PropTypes.object.isRequired
     }
@@ -65,3 +71,22 @@ export default class ProductList extends React.Component{
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        productsList: state.products,
+        cartCounter: state.cart.counter
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchProducts: () => dispatch(fetchProducts(baseUrlProducts)),
+        fetchProductDetails: productId => dispatch(fetchProductDetails(productId)),
+        addProductToCart: (product, quantityChoosen) => dispatch(addProductToCart(product, quantityChoosen)),
+        updateCartProductsCounter: () => dispatch(updateCartProductsCounter())
+    }
+}
+
+const ProductsListContainer = connect(mapStateToProps, mapDispatchToProps)(ProductList);
+
+export default ProductsListContainer;

@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Button } from '../Button'
 import { Loading } from '../Loading';
 import { ErrorComponent } from '../ErrorComponent';
 import CustomLink from '../CustomLink';
+import { ImageWithLink } from '../ImageWithLink';
+import { Title } from '../Title';
+import { Price } from '../Price';
 
 import { 
     EMPTY_CART, 
@@ -17,9 +21,14 @@ import {
     product_details, 
     products_list 
 } from '../../utils/link';
-import { ImageWithLink } from '../ImageWithLink';
-import { Title } from '../Title';
-import { Price } from '../Price';
+
+import { baseUrlCart } from '../../utils/url';
+
+import fetchCartProducts from '../../state/cart-state/actions/fetchCartProducts';
+import addProductToCart from '../../state/cart-state/actions/addProductToCart';
+import removeProductFromCart from '../../state/cart-state/actions/removeProductFromCart';
+import removeAllProductsFromCart from '../../state/cart-state/actions/removeAllProductsFromCart';
+import updateCartProductsCounter from '../../state/cart-state/actions/updateCartProductsCounter';
 
 //Component Empty Cart
 const EmptyCart = ({pathLink, text}) => {
@@ -42,7 +51,7 @@ EmptyCart.propTypes = {
     text: PropTypes.string
 }
 
-export default class Cart extends React.Component{
+class Cart extends React.Component{
 
     static propTypes = {
         cart: PropTypes.object.isRequired
@@ -119,3 +128,18 @@ export default class Cart extends React.Component{
         )
     }
 }
+
+const mapStateToProps = state => ({ cart: state.cart });
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchCartProducts: () => dispatch(fetchCartProducts(baseUrlCart)),
+        addProductToCart: product => dispatch(addProductToCart(product)),
+        removeProductFromCart: product => dispatch(removeProductFromCart(product)),
+        removeAllProductsFromCart: () => dispatch(removeAllProductsFromCart()),
+        updateCartProductsCounter: () => dispatch(updateCartProductsCounter(baseUrlCart))
+    }
+}
+
+const CartContainer = connect(mapStateToProps, mapDispatchToProps)(Cart);
+
+export default CartContainer;
