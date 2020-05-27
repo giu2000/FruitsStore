@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomLink from '../CustomLink';
+import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import {
     HOME_LINK_PLACEHOLDER,
@@ -28,16 +28,16 @@ const routeConfig = {
 }
 
 const Navbar = props => {
-    const location = useLocation(); // ritorna un oggetto con le info delal Current Url
+    const location = useLocation(); // ritorna un oggetto con le info della Current Url
     const renderList = Object.keys(routeConfig).filter(key => routeConfig[key].pathLink !== location.pathname)
                                             .map(key => {
                                                 const { pathLink, text } = routeConfig[key]
                                                 return(
                                                     <li key={key}>
-                                                        <CustomLink 
-                                                            pathLink={pathLink}
-                                                            text={text}
-                                                        />
+                                                        <Link 
+                                                            to={pathLink}
+                                                        >{text}
+                                                        </Link>
                                                     </li>
                                                 )
                                             })
