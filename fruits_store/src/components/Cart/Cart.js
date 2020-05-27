@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Button } from '../Button'
 import { Loading } from '../Loading';
 import { ErrorComponent } from '../ErrorComponent';
-import CustomLink from '../CustomLink';
 import { ImageWithLink } from '../ImageWithLink';
 import { Title } from '../Title';
 import { Price } from '../Price';
@@ -36,11 +36,10 @@ const EmptyCart = ({pathLink, text}) => {
         <div className='telwe columns'>
             <div className='row' style={{outline: '1px solid black', display:'grid'}}>
                 <p style={{textAlign: 'center'}}>{EMPTY_CART}</p>
-                <CustomLink 
-                    pathLink={pathLink} 
-                    text={text}
-                    style={{textAlign: 'center'}}
-                />
+                <Link style={{ textAlign: 'center' }}
+                    to={pathLink} 
+                >{text}
+                </Link>
             </div>
         </div>
     )
