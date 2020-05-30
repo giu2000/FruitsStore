@@ -64,29 +64,29 @@
   ],
   "cart": [
     {
+      "id": "3",
+      "name": "Lemon",
+      "description": "Description",
+      "price": "300",
+      "quantity": 24,
+      "productTotalPrice": 7200
+    },
+    {
       "id": "1",
       "name": "Orange",
       "description": "Description",
       "price": "100",
       "image_src": "./orange.jpg",
-      "quantity": 14,
-      "productTotalPrice": 1400
+      "quantity": 15,
+      "productTotalPrice": 1500
     },
     {
       "id": "2",
       "name": "Apple",
       "description": "Description",
       "price": "200",
-      "quantity": 5,
-      "productTotalPrice": 1000
-    },
-    {
-      "id": "3",
-      "name": "Lemon",
-      "description": "Description",
-      "price": "300",
-      "quantity": 10,
-      "productTotalPrice": 3000
+      "quantity": 4,
+      "productTotalPrice": 800
     }
   ]
 }

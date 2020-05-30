@@ -1,30 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import updateCartCounter from '../../state/cart-state/actions/updateCartProductsCounter';
 
-class CartCounter extends React.Component{
+let CartCounter = props => {
+    const { counter, updateCartCounter } = props
+    useEffect(() => updateCartCounter())
+    return(
+        <div>
+            {`Products in Cart: ${counter}`}
+        </div>
+    )
+}
 
-    static propTypes = {
-        updateCartCounter: PropTypes.func,
-        counter: PropTypes.number
-    }
-
-    componentDidMount(){
-        this.props.updateCartCounter();
-    }
-
-    render(){
-        return(
-            <div>
-                {`Products in Cart: ${this.props.counter}`}
-            </div> 
-        )
-    }
+CartCounter.propTypes = {
+    counter: PropTypes.number,
+    updateCartCounter: PropTypes.func
 }
 
 const mapStateToProps = state => ({ counter: state.cart.counter })
 const mapDispatchToProps = dispatch => ({ updateCartCounter: () => dispatch(updateCartCounter()) })
-const CartCounterContainer = connect(mapStateToProps, mapDispatchToProps)(CartCounter);
+CartCounter = connect(mapStateToProps, mapDispatchToProps)(CartCounter);
 
-export default CartCounterContainer;
+export default CartCounter;

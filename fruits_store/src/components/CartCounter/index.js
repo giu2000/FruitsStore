@@ -1,1 +1,1 @@
-export { default as CartCounterContainer } from './CartCounter';
+export { default as CartCounter } from './CartCounter';

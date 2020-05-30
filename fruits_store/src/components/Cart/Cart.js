@@ -66,7 +66,7 @@ class Cart extends React.Component{
             products.map((product, index) => {
                 const { id, name, quantity, productTotalPrice } = product;
                 return(
-                    <div className="nine columns" key={product.id + index}>
+                    <div key={product.id + index}>
                         <div >
                             <ImageWithLink
                                 src={require('../../orange.jpg')}
