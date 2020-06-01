@@ -58,6 +58,8 @@ div.product-info > div{
     outline: 1px solid black;
     margin: 0.5rem;
     padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
 }
 .add-to-cart-btn{
     margin:0.5rem;
