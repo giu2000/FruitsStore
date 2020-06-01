@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -50,82 +50,89 @@ EmptyCart.propTypes = {
     text: PropTypes.string
 }
 
-class Cart extends React.Component{
+let Cart = props => {
+    let { fetchCartProducts,
+            removeProductFromCart,
+            addProductToCart,
+            removeAllProductsFromCart,
+            cart: { isLoading, error, products, totalPrice }
+        } = props
 
-    static propTypes = {
-        cart: PropTypes.object.isRequired
-    }
+    useEffect(() => {
+        fetchCartProducts()
+    }, []);
 
-    componentDidMount(){
-        this.props.fetchCartProducts()
-    }
-
-    renderList = products => {
-        const { removeProductFromCart, addProductToCart } = this.props;
-        return(
-            products.map((product, index) => {
+    const renderList = products => {
+        return (
+             products.map((product, index) => {
                 const { id, name, quantity, productTotalPrice } = product;
-                return(
-                    <div className="nine columns" key={product.id + index}>
-                        <div >
-                            <ImageWithLink
-                                src={require('../../orange.jpg')}
-                                alt="photo"
-                                style={{ width: "30%", height: "30%" }}
-                                pathLink={`${product_details}/${id}`}
-                            />
-                            <div className="two columns">
-                                <Title
-                                    title={name}
-                                />
-                            </div>
+                    return(
+                     <div key={product.id + index}>
+                         <div style={{display:'flex'}}>
+                             <ImageWithLink
+                                 
+                                 alt="photo"
+                                 style={{ width: "30%", height: "30%" }}
+                                 pathLink={`${product_details}/${id}`}
+                             />
+                             <div >
+                                 <Title
+                                     title={name}
+                                 />
+                             </div>
 
-                            <div className="three columns" className='product-action'>
-                                <Button
-                                    onClick={() => removeProductFromCart(product)}
-                                    text={remove_from_cart_symbol}
-                                />
-                                <span>{quantity}</span>
-                                <Button
-                                    onClick={() => addProductToCart(product)}
-                                    text={add_to_cart_symbol}
-                                />
-                            </div>
-                            <div className="two columns">
-                                <Price
-                                    price={String(productTotalPrice)}
-                                />
-                            </div>
-                        </div>
-                    </div>
+                             <div  className='product-action'>
+                                 <Button
+                                     onClick={() => removeProductFromCart(product)}
+                                     text={remove_from_cart_symbol}
+                                 />
+                                 <span>{quantity}</span>
+                                 <Button
+                                     onClick={() => addProductToCart(product)}
+                                     text={add_to_cart_symbol}
+                                 />
+                             </div>
+                             <div >
+                                 <Price
+                                     price={String(productTotalPrice)}
+                                 />
+                             </div>
+                         </div>
+                     </div>
 
-                )
-            })
-        )
+                 )
+             })
+         )
     }
-    render(){
-        const { cart: { isLoading, error, products, totalPrice } } = this.props;
-        return(
-            <div className='container'>
-                {isLoading && <Loading />}
-                {error && <ErrorComponent />}
-                {products.length === 0 ? 
-                    <EmptyCart pathLink={products_list} text={BACK_TO_PRODUCTS_LIST_LINK} />
-                    : <div className='row'>
-                        <div className='nine columns'>
-                            {this.renderList(products)}
-                        </div>
-                        <div className='three columns'>
-                           <div>{`${TOTAL_PRICE}: $ ${totalPrice}`}</div>
-                            <Button onClick={() => this.props.removeAllProductsFromCart(products)} text={DELETE_ALL} />
-                        </div>
 
-                    </div>
+    return (
+             <div className='container'>
+                 {isLoading && <Loading />}
+                 {error && <ErrorComponent />}
+                 {products.length === 0 ? 
+                     <EmptyCart pathLink={products_list} text={BACK_TO_PRODUCTS_LIST_LINK} />
+                     : <div className='row'>
+                         <div className='nine columns'>
+                             {renderList(products)}
+                         </div>
+                         <div className='three columns'>
+                            <div>{`${TOTAL_PRICE}: $ ${totalPrice}`}</div>
+                             <Button onClick={() => removeAllProductsFromCart(products)} text={DELETE_ALL} />
+                         </div>
 
-                }
-            </div>
-        )
-    }
+                     </div>
+
+                 }
+             </div>
+         )
+
+}
+
+Cart.propTypes = {
+    cart: PropTypes.object.isRequired,
+    removeProductFromCart: PropTypes.func,
+    addProductToCart: PropTypes.func,
+    removeAllProductsFromCart: PropTypes.func
 }
 
 const mapStateToProps = state => ({ cart: state.cart });
