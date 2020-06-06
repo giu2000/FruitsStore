@@ -8,6 +8,7 @@ let CartForm = props => {
     const { product, addProductToCart } = props;
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
+        const { productToAdd, quantity } = data;
         addProductToCart(productToAdd, quantity)
     }
     return (

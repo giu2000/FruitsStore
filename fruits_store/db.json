@@ -71,6 +71,14 @@
       "image_src": "./orange.jpg",
       "quantity": 4,
       "productTotalPrice": 400
+    },
+    {
+      "id": "2",
+      "name": "Apple",
+      "description": "Description",
+      "price": "200",
+      "quantity": 9,
+      "productTotalPrice": 1800
     }
   ]
 }
