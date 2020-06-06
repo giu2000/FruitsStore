@@ -88,7 +88,7 @@ let Cart = props => {
                                  />
                                  <span>{quantity}</span>
                                  <Button
-                                     onClick={() => addProductToCart(product)}
+                                     onClick={() => addProductToCart(JSON.stringify(product))}
                                      text={add_to_cart_symbol}
                                  />
                              </div>
@@ -146,6 +146,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const CartContainer = connect(mapStateToProps, mapDispatchToProps)(Cart);
-
-export default CartContainer;
+export default Cart = connect(mapStateToProps, mapDispatchToProps)(Cart);

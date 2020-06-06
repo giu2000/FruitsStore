@@ -69,8 +69,24 @@
       "description": "Description",
       "price": "100",
       "image_src": "./orange.jpg",
-      "quantity": 5,
-      "productTotalPrice": 500
+      "quantity": 101,
+      "productTotalPrice": 10100
+    },
+    {
+      "id": "2",
+      "name": "Apple",
+      "description": "Description",
+      "price": "200",
+      "quantity": 10,
+      "productTotalPrice": 2000
+    },
+    {
+      "id": "5",
+      "name": "Pear",
+      "description": "Description",
+      "price": "140",
+      "quantity": 11,
+      "productTotalPrice": 1540
     }
   ]
 }
