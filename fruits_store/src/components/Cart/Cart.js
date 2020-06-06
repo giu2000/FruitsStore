@@ -88,7 +88,7 @@ let Cart = props => {
                                  />
                                  <span>{quantity}</span>
                                  <Button
-                                     onClick={() => addProductToCart(product)}
+                                     onClick={() => addProductToCart(JSON.stringify(product))}
                                      text={add_to_cart_symbol}
                                  />
                              </div>

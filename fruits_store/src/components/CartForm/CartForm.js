@@ -6,7 +6,7 @@ import addProductToCart from "../../state/cart-state/actions/addProductToCart";
 
 let CartForm = props => {
     const { product, addProductToCart } = props;
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => {
         const { productToAdd, quantity } = data;
         addProductToCart(productToAdd, quantity)
@@ -17,8 +17,13 @@ let CartForm = props => {
                 name='quantity'
                 type='number'
                 defaultValue={0}
-                ref={register()}
+                ref={register({
+                        validate: {
+                            positive: value => parseInt(value) > 0 || 'negative number'
+                        }
+                    })}
             />
+            {errors.quantity && <div>Cannot add negative number  of products</div>}
             <input 
                 name='productToAdd'
                 type='hidden'
