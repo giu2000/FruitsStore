@@ -69,8 +69,8 @@
       "description": "Description",
       "price": "100",
       "image_src": "./orange.jpg",
-      "quantity": 11,
-      "productTotalPrice": 1100
+      "quantity": 101,
+      "productTotalPrice": 10100
     },
     {
       "id": "2",
